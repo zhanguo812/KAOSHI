@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>考试任务管理</title>
+  <link rel="stylesheet" href="../css/style_kaoshi.css">
+</head>
+
+<body>
+  <div id="T_k">
+    <!-- 结构上 -->
+    <div class="T_K_shang">
+      <!-- 标题 -->
+      <div class="class_header border_0 padding_bottom_0">
+        <h4 class="class_title padding_bottom_15" style="border-bottom:4px solid #eee;">考试任务管理</h4>
+      </div>
+      <div class="T_K_shang_content">
+        <div>
+          <div style="padding:0 30px;">
+            <div class="class_addTk" style="border-bottom:1px dashed #ddd;">
+              <div></div>
+              <div>
+                <input type="text" class="class_input" placeholder="请输入关键字搜索">
+                <button class="class_button">搜索</button>
+              </div>
+            </div>
+            <div class="class_addTk" style="border-bottom:1px dashed #ddd;">
+              <div><span class="class_color_font">考试任务列表</span></div>
+              <div class="display_arond" style="width: 300px;">
+                <span class="class_color_font">状态选择</span>
+                <div id="dropdown" class="class_color_font select_T">
+                  <p style="padding-left: 10px;">全部</p>
+                  <ul>
+                    <li><a href="javaScript:;" rel="1">全部</a></li>
+                    <li><a href="javaScript:;" rel="1">未开始</a></li>
+                    <li><a href="javaScript:;" rel="2">进行中</a></li>
+                    <li><a href="javaScript:;" rel="3">已结束</a></li>
+                  </ul>
+                </div>
+                <button class="class_button border_0" style="background:rgb(250, 189, 20);">新增考试</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 结构下 -->
+    <div class="T_K_xia padding_30 padding_top_0">
+      <table class="Width">
+        <thead>
+          <tr>
+            <td>考试名称</td>
+            <td>未考/及格/不及格/缺考</td>
+            <td>创建人</td>
+            <td>创建时间</td>
+            <td>考试期限</td>
+            <td>操作</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2020-06月份考试任务</td>
+            <td>0/0/1/0</td>
+            <td>创建人</td>
+            <td>2020-06-08 16:55</td>
+            <td>2020-06-08 00:00:00 - 2020-06-26 23:59:00</td>
+            <td>
+              <div>
+                <span class="class_color_font" style="color:rgb(231, 195, 97);cursor: pointer;">修改</span>
+                <span class="class_color_font margin_left_20" style="color:rgb(231, 94, 89);cursor: pointer;">删除</span>
+                <span class="class_color_font margin_left_20"
+                  style="color:rgb(75, 206, 125);cursor: pointer;">人员变更</span>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td>2020-06月份考试任务</td>
+            <td>0/0/1/0</td>
+            <td>创建人</td>
+            <td>2020-06-08 16:55</td>
+            <td>2020-06-08 00:00:00 - 2020-06-26 23:59:00</td>
+            <td>
+              <div>
+                <span class="class_color_font" style="color:rgb(231, 195, 97);cursor: pointer;">修改</span>
+                <span class="class_color_font margin_left_20" style="color:rgb(231, 94, 89);cursor: pointer;">删除</span>
+                <span class="class_color_font margin_left_20"
+                  style="color:rgb(75, 206, 125);cursor: pointer;">人员变更</span>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="../js/jquery.min.js"></script>
+  <script type="text/javascript">
+    $('#dropdown p').click(function () {
+      var ul = $('#dropdown ul')
+      if (ul.css('display') == 'none') {
+        ul.slideDown('fast')
+      } else {
+        ul.slideUp('fast')
+      }
+      $('#dropdown ul li a').click(function () {
+        var txt = $(this).text()
+        $('#dropdown p').html(txt)
+        var value = $(this).attr('rel')
+        $('#dropdown ul').hide()
+        $('#result').html('您选择了' + txt + '，值为：' + value)
+      })
+    })
+  </script>
+</body>
+
+</html>

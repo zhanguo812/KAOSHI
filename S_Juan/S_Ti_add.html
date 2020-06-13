@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>添加试题</title>
+  <link rel="stylesheet" href="../css/style_kaoshi.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .margin-10 {
+      margin: 8px 0;
+    }
+
+    ul>li {
+      list-style: none;
+      cursor: pointer;
+      border-bottom: 1px solid #eee;
+    }
+
+    .T_K_xia_left {
+      /* border: 1px solid #eee; */
+      float: left;
+      min-width: 350px;
+    }
+
+    .T_K_xia_left>div:first-child {
+      border: 1px solid #eee;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      border-bottom: 0;
+      border-right: 0;
+    }
+
+    .T_K_xia_right {
+      /* border: 1px solid #eee; */
+
+      width: 100%;
+    }
+
+    /* 设置滚动条的样式 */
+    ::-webkit-scrollbar {
+      width: 4px;
+      background-color: #eee;
+    }
+
+    /* 滚动槽 */
+    ::-webkit-scrollbar-track {
+      border-radius: 10px;
+    }
+
+    /* 滚动条滑块 */
+    ::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background: #999;
+    }
+
+    .T_K_xia_right>div:first-child {
+      border: 1px solid #eee;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+    }
+
+    .T_K_xia_right>div:last-child {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #eee;
+      border-left: 0;
+      border-top: 0;
+      overflow: hidden;
+      overflow: auto;
+    }
+
+    .T_K_xia_left>div:last-child {
+      min-width: 346px;
+      height: 600px;
+      overflow: hidden;
+      overflow: auto;
+    }
+
+    .clear {
+      display: flex;
+      /* 不能换行 */
+    }
+
+    .clear::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    .sussce {
+      color: #105ae2 !important;
+      background-color: #c9ddf3;
+      border-right: 3px solid #105ae2;
+      cursor: pointer;
+    }
+
+    .font_size {
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="T_k">
+    <!-- 结构上 -->
+    <div class="T_K_shang">
+      <!-- 标题 -->
+      <div class="class_header" style="border: 0;">
+        <h4 class="class_title" style="
+              border-bottom: 4px solid #eee;
+              padding-bottom: 15px;
+              text-align: center;
+            ">
+          添加试题
+        </h4>
+      </div>
+    </div>
+    <!-- 结构下 -->
+
+    <div class="T_K_xia" style="padding-top: 0;">
+      <div class="clear">
+        <!-- 结构左 -->
+        <div class="T_K_xia_left">
+          <div class="display_arond" style="padding: 0 15px; justify-content: center;">
+            <input type="text" class="class_input" placeholder="根据题库名称搜索" />
+            <button class="class_button">搜索</button>
+          </div>
+          <div style="border: 1px solid #eee;">
+            <ul id="TK_left_ui">
+              <li style="background-color: #f3f4f3; text-align: center;height:30px;line-height: 30px;">
+                <span class="class_color_font">全部</span>
+              </li>
+              <!-- 循环列表 -->
+              <li style="padding: 10px 50px;">
+                <div>
+                  <img src="" alt="" />
+                  <span class="font_size">
+                    建筑装饰装修工程质量验收标准题库</span>
+                </div>
+              </li>
+              <li style="padding: 10px 50px;">
+                <div>
+                  <img src="" alt="" />
+                  <span class="font_size">
+                    建筑装饰装修工程质量验收标准题库</span>
+                </div>
+              </li>
+              <li style="padding: 10px 50px;">
+                <div>
+                  <img src="" alt="" />
+                  <span class="font_size">
+                    建筑装饰装修工程质量验收标准题库</span>
+                </div>
+              </li>
+              <li style="padding: 10px 50px;">
+                <div>
+                  <img src="" alt="" />
+                  <span class="font_size">
+                    建筑装饰装修工程质量验收标准题库</span>
+                </div>
+              </li>
+              <li style="padding: 10px 50px;">
+                <div>
+                  <img src="" alt="" />
+                  <span class="font_size">
+                    建筑装饰装修工程质量验收标准题库</span>
+                </div>
+              </li>
+              <li style="padding: 10px 50px;">
+                <div>
+                  <img src="" alt="" />
+                  <span class="font_size">
+                    建筑装饰装修工程质量验收标准题库</span>
+                </div>
+              </li>
+              <li style="padding: 10px 50px;">
+                <div>
+                  <img src="" alt="" />
+                  <span class="font_size">
+                    建筑装饰装修工程质量验收标准题库</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- 结构右 -->
+        <div class="T_K_xia_right">
+          <div class="display_arond" style="padding: 0 50px;">
+            <div class="display_arond" style="width: 250px; justify-content: space-around;">
+              <div id="dropdown" class="class_color_font select_T">
+                <p>全部题型</p>
+                <ul>
+                  <li><a href="javaScript:;" rel="1">单选题</a></li>
+                  <li><a href="javaScript:;" rel="2">多选题</a></li>
+                  <li><a href="javaScript:;" rel="3">判断题</a></li>
+                  <li><a href="javaScript:;" rel="4">填空题</a></li>
+                  <li><a href="javaScript:;" rel="5">解答题</a></li>
+                </ul>
+              </div>
+              <div id="dropdown_1" class="class_color_font select_T">
+                <p>全部难度</p>
+                <ul>
+                  <li><a href="javaScript:;" rel="1">简单</a></li>
+                  <li><a href="javaScript:;" rel="2">一般</a></li>
+                  <li><a href="javaScript:;" rel="3">较难</a></li>
+                  <li><a href="javaScript:;" rel="4">困难</a></li>
+                </ul>
+              </div>
+            </div>
+            <div>
+              <input type="text" class="class_input" placeholder="根据试题名称搜索" />
+              <button class="class_button">搜索</button>
+            </div>
+          </div>
+          <div>
+            <table class="Width" style="border: 0;">
+              <thead>
+                <tr>
+                  <td align="left">
+                    <input type="checkbox" name="" id="" style="margin-left: 10px;" /><span
+                      style="margin-left: 10px;">全选当前页</span>
+                  </td>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td align="left" style="border: 0;">
+                    <input type="checkbox" name="" id="" style="margin-left: 10px;" /><span
+                      style="margin-left: 10px;">题目</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="left" style="border: 0;">
+                    <input type="checkbox" name="" id="" style="margin-left: 10px;" /><span
+                      style="margin-left: 10px;">题目</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="left" style="border: 0;">
+                    <input type="checkbox" name="" id="" style="margin-left: 10px;" /><span
+                      style="margin-left: 10px;">题目</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td align="left" style="border: 0;">
+                    <input type="checkbox" name="" id="" style="margin-left: 10px;" /><span
+                      style="margin-left: 10px;">题目</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align: center;">
+    <button class="class_button">返回</button>
+    <button class="class_button">确认</button>
+  </div>
+  <script src="../js/jquery.min.js"></script>
+  <script type="text/javascript">
+    $('#dropdown p').click(function () {
+      var ul = $('#dropdown ul')
+      if (ul.css('display') == 'none') {
+        ul.slideDown('fast')
+      } else {
+        ul.slideUp('fast')
+      }
+      $('#dropdown ul li a').click(function () {
+        var txt = $(this).text()
+        $('#dropdown p').html(txt)
+        var value = $(this).attr('rel')
+        $('#dropdown ul').hide()
+        $('#result').html('您选择了' + txt + '，值为：' + value)
+      })
+    })
+    $('#dropdown_1 p').click(function () {
+      var ul = $('#dropdown_1 ul')
+      if (ul.css('display') == 'none') {
+        ul.slideDown('fast')
+      } else {
+        ul.slideUp('fast')
+      }
+      $('#dropdown_1 ul li a').click(function () {
+        var txt = $(this).text()
+        $('#dropdown_1 p').html(txt)
+        var value = $(this).attr('rel')
+        $('#dropdown_1 ul').hide()
+        $('#result').html('您选择了' + txt + '，值为：' + value)
+      })
+    })
+    $("#TK_left_ui").on("click", "li", function () {
+      $(this).addClass("sussce").siblings($(this)).removeClass("sussce");
+    })
+  </script>
+</body>
+
+</html>

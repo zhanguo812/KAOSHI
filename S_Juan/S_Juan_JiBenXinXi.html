@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>添加试卷</title>
+  <link rel="stylesheet" href="../css/style_kaoshi.css">
+  <style>
+    .margin-10 {
+      margin: 8px 0;
+    }
+
+    .display_center {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .fengshuqi {
+      width: 150px;
+      height: 25px;
+      border: 1px solid #ddd;
+      line-height: 25px;
+      display: flex;
+      border-radius: 4px;
+    }
+
+    .fengshuqi>span {
+      display: block;
+      width: 50px;
+      text-align: center;
+    }
+
+    .fengshuqi>span:first-child,
+    .fengshuqi>span:last-child {
+      color: #000;
+      cursor: pointer;
+    }
+
+    .fengshuqi>span:first-child:hover,
+    .fengshuqi>span:last-child:hover {
+      background-color: #e8e8e8;
+      color: #000;
+      cursor: pointer;
+    }
+
+    .fengshuqi>span+span {
+      border-left: 1px solid #eee;
+    }
+
+    .class_color_lan {
+      color: rgb(3, 43, 129);
+    }
+
+    .class_color_red {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="T_k">
+    <!-- 结构上 -->
+    <div class="T_K_shang">
+      <!-- 标题 -->
+      <div class="class_header" style="border:0">
+        <h4 class="class_title" style="border-bottom:4px solid #eee;padding-bottom:15px;">
+          试卷基本信息</h4>
+      </div>
+    </div>
+    <!-- 结构下 -->
+    <div class="T_K_xia padding_top_0">
+      <div style="border: 1px solid #eee;padding:30px;padding-top:0;border-radius: 3px;">
+        <!-- 基本信息 -->
+        <div class="display_center">
+          <div style="width: 100px;">
+            <span class="class_color_lan">|</span>
+            <span class="class_color_font class_color_lan" style="margin-right:20px;">基本信息</span>
+          </div>
+        </div>
+        <div style="margin-left: 20px;">
+          <div class="display_center">
+            <div style="width: 100px;">
+              <span class="class_color_red">*</span>
+              <span class="class_color_font" style="margin-right:20px">试卷</span>
+            </div>
+            <input type="text" class="class_input" value="今日一练">
+          </div>
+          <div class="display_center">
+            <div style="width: 100px;">
+              <span class="class_color_font" style="margin-right:20px">添加标签</span>
+            </div>
+            <input type="text" class="class_input" value="" style="width: 80px;color:#666">
+          </div>
+          <div class="display_center">
+            <div style="width: 100px;">
+              <span class="class_color_font" style="margin-right:20px">试卷说明</span>
+            </div>
+            <textarea name="" id="" cols="60" rows="6" class="class_input"
+              style="width: 400px;height: 100px;"></textarea>
+          </div>
+        </div>
+        <!-- 添加试题 -->
+        <div class="display_center" style="justify-content: space-between;">
+          <div style="width: 100px;">
+            <span class="class_color_lan">|</span>
+            <span class="class_color_font class_color_lan" style="margin-right:20px">添加试题</span>
+          </div>
+          <div>
+            <button class="class_button">添加试题</button>
+          </div>
+        </div>
+        <!-- 添加试题表-->
+        <div>
+          <table class="Width">
+            <thead>
+              <tr>
+                <td>序号</td>
+                <td class="w-40">题目</td>
+                <td>题型</td>
+                <td>分值</td>
+                <td>分值设置</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>01</td>
+                <td class="w-40">危险性较大的分部分项工程安全管理</td>
+                <td>单选</td>
+                <td class="num">1</td>
+                <td align="center">
+                  <div class="fengshuqi_1 fengshuqi">
+                    <span>+</span>
+                    <span>1</span>
+                    <span>-</span>
+                  </div>
+                </td>
+                <td>
+                  <a href="javascript:;">删除</a>
+                </td>
+              </tr>
+
+              <tr>
+                <td>01</td>
+                <td class="w-40">危险性较大的分部分项工程安全管理</td>
+                <td>单选</td>
+                <td class="num">1</td>
+                <td align="center">
+                  <div class="fengshuqi_1 fengshuqi">
+                    <span>+</span>
+                    <span>1</span>
+                    <span>-</span>
+                  </div>
+                </td>
+                <td>
+                  <a href="javascript:;">删除</a>
+                </td>
+              </tr>
+              <tr>
+                <td>02</td>
+                <td class="w-40">危险性较大的分部分项工程安全管理</td>
+                <td>多选</td>
+                <td class="num">1</td>
+                <td align="center">
+                  <div class="fengshuqi_1 fengshuqi">
+                    <span>+</span>
+                    <span>1</span>
+                    <span>-</span>
+                  </div>
+                </td>
+                <td>
+                  <a href="javascript:;">删除</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- 总分与及格线 -->
+        <div class="display_center">
+          <div style="width: 120px;">
+            <span class="class_color_lan">|</span>
+            <span class="class_color_font class_color_lan" style="margin-right:20px">总分与及格线</span>
+          </div>
+        </div>
+
+        <div style="margin-left: 20px;">
+          <!-- 总分 -->
+          <div class="display_center">
+            <div style="width: 100px;">
+              <span class="class_color_font" style="margin-right:20px">总分</span>
+              <span class="class_color_lan" id="zongfen"></span>
+            </div>
+          </div>
+          <!-- 及格线 -->
+          <div class="display_center">
+            <div style="width: 100px;">
+              <span class="class_color_red">*</span>
+              <span class="class_color_font" style="margin-right:20px">及格线</span>
+            </div>
+            <div class="fengshuqi fengshuqi_2" style="margin-right:20px">
+              <span>+</span>
+              <span id="num_10">60</span>
+              <span>-</span>
+            </div>
+            <span class="class_color_font" style="margin-right:20px">%</span>
+            <span class="class_color_font class_color_lan">
+              及格分(<span id="jige"></span>) = 总分 (<span id="zong"></span>) X 及格线 (<span id="num_bai"></span>) %
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center;">
+      <button class="class_button">取消</button>
+      <button class="class_button">保存</button>
+    </div>
+  </div>
+  <script src="../js/jquery.min.js"></script>
+  <script type="text/javascript">
+    var num = 0; //总数
+    var jige = 0; //及格数
+    var num_bai = $("#num_10").html();
+    //分数计算机
+    $(".fengshuqi_1").on("click", "span", function () {
+      var a = $(this).html();
+      if (a == "+") {
+        var add = $(this).next().html();
+        add++;
+        $(this).next().html(add);
+        $(this).parent().parent().prev().html(add);
+      }
+      if (a == "-") {
+        var jian = $(this).prev().html();
+        if (jian != 1) {
+          jian--;
+          $(this).prev().html(jian);
+          $(this).parent().parent().prev().html(jian);
+
+        } else {
+          jian = 1;
+          $(this).prev().html(jian);
+          $(this).parent().parent().prev().html(jian);
+        }
+      }
+      //总数局部改变
+      var num = 0;
+      $(".num").each(
+        function () {
+          num += Number($(this).html())
+        }
+      )
+      $("#zongfen").html(num); //页面总分
+      $("#zong").html(num); //及格线---总分
+    })
+    //总数全局改变
+    $(".num").each(
+      function () {
+        num += Number($(this).html())
+      }
+    )
+    $("#zongfen").html(num); //页面总分
+    //百分数计算器
+    $(".fengshuqi_2").on("click", "span", function () {
+      var a = $(this).html();
+      var jige = 0; //及格数
+      var num_bai = $("#num_10").html(); //当前百分数
+      if (a == "+") {
+        var add = $(this).next().html();
+        if (add != 100) {
+          add++;
+          num_bai++;
+          $(this).next().html(add);
+        } else {
+          add = 100;
+          $(this).next().html(add);
+        }
+      }
+      if (a == "-") {
+        var jian = $(this).prev().html();
+        if (jian != 10) {
+          jian--;
+          num_bai--;
+          $(this).prev().html(jian);
+        } else {
+          jian = 10;
+          $(this).prev().html(jian);
+        }
+      }
+      //局部改变
+      jige = num * (num_bai * 0.01); //及格线---及格数运算
+      $("#jige").html(parseFloat(jige)); //及格线---及格数
+      $("#num_bai").html(num_bai); //及格线---百分数
+    })
+    // 全局改变
+    $("#zong").html(num); //及格线---总数
+    $("#num_bai").html(num_bai); //及格线---百分数
+    jige = num * (num_bai * 0.01); //及格线---及格数运算
+    $("#jige").html(parseFloat(jige)); //及格线---及格数
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加试题</title>
+    <link rel="stylesheet" href="../css/style_kaoshi.css">
+    <style>
+        .option {
+            width: 100px;
+            height: 28px;
+            border: 1px solid #cccccc;
+        }
+
+        .option select {
+            border: none;
+            outline: none;
+            width: 100%;
+            height: 28px;
+            line-height: 28px;
+            border-radius: 5px;
+        }
+
+        .option option:hover {
+            border: none;
+            outline: none;
+            border-radius: 5px;
+        }
+
+        .display_center {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            margin: 40px 0;
+        }
+
+        .select_A>label {
+            margin-left: 25px;
+        }
+
+        .select_A>span {
+            margin-left: 25px;
+        }
+
+        .select_A::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .DA_select_A {
+            margin-top: 20px;
+            background-color: #f3f3f4;
+            width: 500px;
+            text-align: left;
+            line-height: 50px;
+            border-radius: 10px;
+            padding: 0 30px;
+        }
+
+
+        img {
+            height: 50px;
+            width: 50px;
+            border: 1px solid #D8D8D8;
+            transition: all 0.5s linear;
+        }
+
+        img:hover {
+            height: 200px;
+            width: 200px;
+            transition: all 0.5s linear;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="T_k">
+        <!-- 结构上 -->
+        <div class="T_K_shang">
+            <!-- 标题 -->
+            <div class="class_header" style="border: 2px solid #eee;">
+                <h4 class="class_title">新增试题</h4>
+            </div>
+            <div class="display_center" style="margin:20px 50px 0 30px;padding-bottom: 5px;">
+                <div style="width: 100px;">
+                    <span style="color:#0958c0">|</span>
+                    <span class="class_color_font" style="margin-right:20px;color:#0958c0;font-size: 15px;">试题内容</span>
+                </div>
+            </div>
+
+            <div class="T_K_shang_content" style="position: relative;margin-top: 30px;">
+                <div class="T_K_shang_sou" style="justify-content: start;margin-left:10px;" id="button">
+                    <button class="class_button_d active_buttton" i="danxuan">单选题</button>
+                    <button class="class_button_d" i="duoxuan"
+                        style="position: absolute;left:126px;top:-14px;">多选题</button>
+                    <button class="class_button_d" i="panduan"
+                        style="position: absolute;left:217px;top:-14px;">判断题</button>
+                    <button class="class_button_d" i="tiankong"
+                        style="position: absolute;left:310px;top:-14px;">填空题</button>
+                    <button class="class_button_d " i="jieda"
+                        style="position: absolute;left:402px;top:-14px;">解答题</button>
+                </div>
+
+            </div>
+        </div>
+        <!-- 结构下 -->
+        <div class="T_K_xia" style="padding-top:0;">
+            <!-- 单选 -->
+            <div style="display:block;" id="danxuan" class="class_border">
+                <div class="display_center" style="margin:0">
+                    <div style="width: 100px;">
+                        <span style="color:red">*</span>
+                        <span class="class_color_font" style="margin-right:20px">难易程度</span>
+                    </div>
+                    <div class="option">
+                        <select class="class_color_font" name="select">
+                            <option value="1" class="class_color_font">请选择</option>
+                            <option value="高" class="class_color_font">高</option>
+                            <option value="中" class="class_color_font">中</option>
+                            <option value="低" class="class_color_font">低</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red">*</span>
+                        <span class="class_color_font" style="margin-right:20px">题目</span>
+                    </div>
+                    <input type="text" placeholder="请输入试题题目" class="class_input" style="width:500px" id="Ti_MU">
+                </div>
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red"></span>
+                        <span class="class_color_font" style="margin-right:20px"></span>
+                    </div>
+                    <label for="file" class="class_button class_color_font" style="margin:0 ;background-color:#fff;color:#09c786;
+                    border:1px dashed #09c786;">选择本地图片</label>
+                    <input type="file" style='display: none;' multiple="multiple" id='file' />
+                    <div id='img-cont' class="margin_left_20"></div>
+                </div>
+
+
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red">&nbsp;</span>
+                        <span class="class_color_font" style="margin-right:20px">答案选项</span>
+                    </div>
+                    <span style="color:#09c786;cursor: pointer;" onclick="add()">+ 添加选项</span>
+                </div>
+                <div id="add">
+                    <div class="display_center" style="margin:15px 0">
+                        <div style="width: 100px;">
+                            <div class="class_color_font"
+                                style="margin-left:10px;width: 30px;height:30px;line-height: 30px;text-align: center;background-color:#09c786;color:#fff">
+                                A</div>
+                        </div>
+                        <input type="text" placeholder="请输入选项内容" class="class_input" style="width:500px" id="input_A"
+                            s="A">
+                    </div>
+                    <div class="display_center" style="margin:15px 0">
+                        <div style="width: 100px;">
+                            <div class="class_color_font"
+                                style="margin-left:10px;width: 30px;height:30px;line-height: 30px;text-align: center;background-color:#09c786;color:#fff">
+                                B</div>
+                        </div>
+                        <input type="text" placeholder="请输入选项内容" class="class_input" style="width:500px" id="input_B"
+                            s="B">
+                    </div>
+                </div>
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red">&nbsp;</span>
+                        <span class="class_color_font" style="margin-right:20px"></span>
+                    </div>
+                    <div class="DA_select_A" style="margin-top:0px;border-radius: 3px;width: 400px;">
+                        <div class="select_A" id="add1">
+                            <label style="float: left;"><input name="Fruit" type="radio" value="A"
+                                    onclick="check=true" /><span class="class_color_font" style="margin-left:5px">正确答案:
+                                    <span style="margin-left:10px">A</span> </span></label>
+                            <label style="float: left;"><input name="Fruit" type="radio" value="B"
+                                    onclick="check=true" /><span class="class_color_font"
+                                    style="margin-left:5px">正确答案:<span style="margin-left:10px">B</span> </span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red"></span>
+                        <span class="class_color_font" style="margin-right:20px">知识点</span>
+                    </div>
+                    <input type="text" class="class_input" style="width:80px;border:1px solid #09c786">
+                </div>
+                <div>
+                    <div class="display_center" style="margin-bottom: 0;">
+                        <div style="width: 100px;">
+                            <span style="color:blue">|</span>
+                            <span class="class_color_font"
+                                style="margin-right:20px;font-weight: bold;color:blue">答案解析</span>
+                        </div>
+                    </div>
+                    <div class="display_center">
+                        <div style="width: 100px;">
+                            <span style="color:blue;margin-left:10px"></span>
+                            <span class="class_color_font" style="margin-right:20px;">答案解析</span>
+                        </div>
+                        <textarea name="" id="" cols="60" rows="6" class="class_input"
+                            style="width: 400px;height: 100px;"></textarea>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <button class="class_button">取消</button>
+                    <button class="class_button" onclick="fun()">创建</button>
+                </div>
+            </div>
+            <!-- 多选 -->
+            <div style="display:none;" id="duoxuan" class="class_border">
+                <div class="display_center" style="margin:0">
+                    <div style="width: 100px;">
+                        <span style="color:red">*</span>
+                        <span class="class_color_font" style="margin-right:20px">难易程度</span>
+                    </div>
+                    <div class="option">
+                        <select class="class_color_font">
+                            <option value="volvo" class="class_color_font">请选择</option>
+                            <option value="volvo" class="class_color_font">高</option>
+                            <option value="saab" class="class_color_font">中</option>
+                            <option value="opel" class="class_color_font">低</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red">*</span>
+                        <span class="class_color_font" style="margin-right:20px">题目</span>
+                    </div>
+                    <input type="text" placeholder="请输入试题题目" class="class_input" style="width:500px">
+                </div>
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red"></span>
+                        <span class="class_color_font" style="margin-right:20px"></span>
+                    </div>
+                    <button class="class_button" style="margin:0 ;background-color:#fff;color:#09c786;
+                        border:1px dashed #09c786;">添加附件</button>
+
+                </div>
+
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red">&nbsp;</span>
+                        <span class="class_color_font" style="margin-right:20px">答案选项</span>
+                    </div>
+                    <span style="color:#09c786;cursor: pointer;" onclick="add_duoxuan()">+ 添加选项</span>
+                </div>
+                <div id="add_duoxuan">
+                    <div class="display_center" style="margin:15px 0">
+                        <div style="width: 100px;">
+                            <div class="class_color_font"
+                                style="margin-left:10px;width: 30px;height:30px;line-height: 30px;text-align: center;background-color:#09c786;color:#fff">
+                                A</div>
+                        </div>
+                        <input type="text" placeholder="请输入选项内容" class="class_input" style="width:500px">
+                    </div>
+                    <div class="display_center" style="margin:15px 0">
+                        <div style="width: 100px;">
+                            <div class="class_color_font"
+                                style="margin-left:10px;width: 30px;height:30px;line-height: 30px;text-align: center;background-color:#09c786;color:#fff">
+                                B</div>
+                        </div>
+                        <input type="text" placeholder="请输入选项内容" class="class_input" style="width:500px">
+                    </div>
+                </div>
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red">&nbsp;</span>
+                        <span class="class_color_font" style="margin-right:20px"></span>
+                    </div>
+                    <div class="DA_select_A" style="margin-top:0px;border-radius: 3px;">
+                        <div class="select_A" id="add_duoxuan1">
+                            <span style="float: left;">
+                                <input type="checkbox" name="" id="" value="A"><span class="class_color_font"
+                                    style="margin-left: 10px;">正确答案:A</span>
+                            </span>
+                            <span style="float: left;">
+                                <input type="checkbox" name="" id="" value="B"><span class="class_color_font"
+                                    style="margin-left: 10px;">正确答案:B</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red"></span>
+                        <span class="class_color_font" style="margin-right:20px">知识点</span>
+                    </div>
+                    <input type="text" class="class_input" style="width:80px;border:1px solid #09c786">
+                </div>
+                <div>
+                    <div class="display_center" style="margin-bottom: 0;">
+                        <div style="width: 100px;">
+                            <span style="color:blue">|</span>
+                            <span class="class_color_font"
+                                style="margin-right:20px;font-weight: bold;color:blue">答案解析</span>
+                        </div>
+                    </div>
+                    <div class="display_center">
+                        <div style="width: 100px;">
+                            <span style="color:blue;margin-left:10px"></span>
+                            <span class="class_color_font" style="margin-right:20px;">答案解析</span>
+                        </div>
+                        <textarea name="" id="" cols="60" rows="6" class="class_input"
+                            style="width: 400px;height: 100px;"></textarea>
+                    </div>
+
+                </div>
+                <div style="text-align: center;">
+                    <button class="class_button">取消</button>
+                    <button class="class_button">创建</button>
+                </div>
+            </div>
+            <!-- 判断 -->
+            <div style="display: none;" id="panduan" class="class_border">
+                <div class="display_center" style="margin:0">
+                    <div style="width: 100px;">
+                        <span style="color:red">*</span>
+                        <span class="class_color_font" style="margin-right:20px">难易程度</span>
+                    </div>
+                    <div class="option">
+                        <select class="class_color_font">
+                            <option value="volvo" class="class_color_font">请选择</option>
+                            <option value="volvo" class="class_color_font">高</option>
+                            <option value="saab" class="class_color_font">中</option>
+                            <option value="opel" class="class_color_font">低</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red">*</span>
+                        <span class="class_color_font" style="margin-right:20px">题目</span>
+                    </div>
+                    <input type="text" placeholder="请输入试题题目" class="class_input" style="width:500px">
+                </div>
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red"></span>
+                        <span class="class_color_font" style="margin-right:20px"></span>
+                    </div>
+                    <button class="class_button" style="margin:0 ;background-color:#fff;color:#09c786;
+                        border:1px dashed #09c786;">添加附件</button>
+
+                </div>
+                <div>
+                    <div class="display_center">
+                        <div style="width: 100px;">
+                            <span style="color:red">&nbsp;</span>
+                            <span class="class_color_font" style="margin-right:20px">答案选项</span>
+                        </div>
+
+                    </div>
+
+                    <div class="display_center" style="margin:15px 0">
+                        <div style="width: 100px;">
+                            <div class="class_color_font"
+                                style="margin-left:10px;width: 30px;height:30px;line-height: 30px;text-align: center;background-color:#09c786;color:#fff">
+                                A</div>
+                        </div>
+                        <input type="text" placeholder="对" class="class_input" style="width:500px" disabled="disabled">
+                    </div>
+                    <div class="display_center" style="margin:15px 0">
+                        <div style="width: 100px;">
+                            <div class="class_color_font"
+                                style="margin-left:10px;width: 30px;height:30px;line-height: 30px;text-align: center;background-color:#09c786;color:#fff">
+                                B</div>
+                        </div>
+                        <input type="text" placeholder="错" class="class_input" style="width:500px" disabled="disabled">
+                    </div>
+                    <div class="display_center">
+                        <div style="width: 100px;">
+                            <span style="color:red">&nbsp;</span>
+                            <span class="class_color_font" style="margin-right:20px"></span>
+                        </div>
+                        <div class="DA" style="margin-top:0px;border-radius: 3px;width:75%">
+                            <div class="select_A">
+                                <label style="float: left;"><input name="Fruit" type="radio" value="A" /><span
+                                        class="class_color_font" style="margin-left:5px">正确答案: <span
+                                            style="margin-left:10px">A</span> </span></label>
+                                <label style="float: left;"><input name="Fruit" type="radio" value="B" /><span
+                                        class="class_color_font" style="margin-left:5px">正确答案:<span
+                                            style="margin-left:10px">B</span> </span> </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red"></span>
+                        <span class="class_color_font" style="margin-right:20px">知识点</span>
+                    </div>
+                    <input type="text" class="class_input" style="width:80px;border:1px solid #09c786">
+                </div>
+                <div>
+                    <div class="display_center" style="margin-bottom: 0;">
+                        <div style="width: 100px;">
+                            <span style="color:blue">|</span>
+                            <span class="class_color_font"
+                                style="margin-right:20px;font-weight: bold;color:blue">答案解析</span>
+                        </div>
+                    </div>
+                    <div class="display_center">
+                        <div style="width: 100px;">
+                            <span style="color:blue;margin-left:10px"></span>
+                            <span class="class_color_font" style="margin-right:20px;">答案解析</span>
+                        </div>
+                        <textarea name="" id="" cols="60" rows="6" class="class_input"
+                            style="width: 400px;height: 100px;"></textarea>
+                    </div>
+
+                </div>
+                <div style="text-align: center;">
+                    <button class="class_button">取消</button>
+                    <button class="class_button">创建</button>
+                </div>
+            </div>
+            <!-- 天空 -->
+            <div style="display: none;" id="tiankong" class="class_border">
+                <div class="display_center" style="margin:0">
+                    <div style="width: 100px;">
+                        <span style="color:red">*</span>
+                        <span class="class_color_font" style="margin-right:20px">难易程度</span>
+                    </div>
+                    <div class="option">
+                        <select class="class_color_font">
+                            <option value="volvo" class="class_color_font">请选择</option>
+                            <option value="volvo" class="class_color_font">高</option>
+                            <option value="saab" class="class_color_font">中</option>
+                            <option value="opel" class="class_color_font">低</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red">*</span>
+                        <span class="class_color_font" style="margin-right:20px">题目</span>
+                    </div>
+                    <input type="text" placeholder="请输入试题题目" class="class_input" style="width:500px">
+                </div>
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red"></span>
+                        <span class="class_color_font" style="margin-right:20px"></span>
+                    </div>
+                    <span class="class_color_font" style="color:orange">【小提示】：。。。。。。。。。。。</span>
+                </div>
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red"></span>
+                        <span class="class_color_font" style="margin-right:20px">知识点</span>
+                    </div>
+                    <input type="text" class="class_input" style="width:80px;border:1px solid #09c786;color:#09c786"
+                        placeholder="添加知识点">
+                </div>
+                <div>
+                    <div class="display_center" style="margin-bottom: 0;">
+                        <div style="width: 100px;">
+                            <span style="color:blue">|</span>
+                            <span class="class_color_font"
+                                style="margin-right:20px;font-weight: bold;color:blue">答案解析</span>
+                        </div>
+                    </div>
+                    <div class="display_center">
+                        <div style="width: 100px;">
+                            <span style="color:blue;margin-left:10px"></span>
+                            <span class="class_color_font" style="margin-right:20px;">答案解析</span>
+                        </div>
+                        <textarea name="" id="" cols="60" rows="6" class="class_input"
+                            style="width: 400px;height: 100px;"></textarea>
+                    </div>
+                    <div class="display_center">
+                        <div style="width: 100px;">
+                            <span style="color:red"></span>
+                            <span class="class_color_font" style="margin-right:20px"></span>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <button class="class_button">取消</button>
+                    <button class="class_button">创建</button>
+                </div>
+            </div>
+            <!-- 解答题 -->
+            <div style="display: none;" id="jieda" class="class_border">
+                <div class="display_center" style="margin:0">
+                    <div style="width: 100px;">
+                        <span style="color:red">*</span>
+                        <span class="class_color_font" style="margin-right:20px">难易程度</span>
+                    </div>
+                    <div class="option">
+                        <select class="class_color_font">
+                            <option value="volvo" class="class_color_font">请选择</option>
+                            <option value="volvo" class="class_color_font">高</option>
+                            <option value="saab" class="class_color_font">中</option>
+                            <option value="opel" class="class_color_font">低</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red">*</span>
+                        <span class="class_color_font" style="margin-right:20px">题目</span>
+                    </div>
+                    <input type="text" placeholder="请输入试题题目" class="class_input" style="width:500px">
+                </div>
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red"></span>
+                        <span class="class_color_font" style="margin-right:20px"></span>
+                    </div>
+                    <button class="class_button" style="margin:0 ;background-color:#fff;color:#09c786;
+                        border:1px dashed #09c786;">添加附件</button>
+
+                </div>
+
+                <div class="display_center" style="margin-bottom: 0;">
+                    <div style="width: 100px;">
+                        <span style="color:red"></span>
+                        <span class="class_color_font" style="margin-right:20px">答案关键字</span>
+                    </div>
+                    <input type="text" class="class_input" style="width:280px" placeholder="请输入20个以内关键字">
+                    <span style="color:#09c786;margin-left: 10px;cursor: pointer;" class="class_color_font"
+                        onclick="add_guanjianzi()">+ 添加关键字</span>
+                </div>
+                <div id="add_guanjianzi">
+
+                </div>
+                <div class="display_center">
+                    <div style="width: 100px;">
+                        <span style="color:red"></span>
+                        <span class="class_color_font" style="margin-right:20px">知识点</span>
+                    </div>
+                    <input type="text" class="class_input" style="width:80px;border:1px solid #09c786">
+                </div>
+                <div>
+                    <div class="display_center" style="margin-bottom: 0;">
+                        <div style="width: 100px;">
+                            <span style="color:blue">|</span>
+                            <span class="class_color_font"
+                                style="margin-right:20px;font-weight: bold;color:blue">答案解析</span>
+                        </div>
+                    </div>
+                    <div class="display_center">
+                        <div style="width: 100px;">
+                            <span style="color:blue;margin-left:10px"></span>
+                            <span class="class_color_font" style="margin-right:20px;">答案解析</span>
+                        </div>
+                        <textarea name="" id="" cols="60" rows="6" class="class_input"
+                            style="width: 400px;height: 100px;"></textarea>
+                    </div>
+                    <div class="display_center">
+                        <div style="width: 100px;">
+                            <span style="color:red"></span>
+                            <span class="class_color_font" style="margin-right:20px"></span>
+                        </div>
+                        <button class="class_button" style="margin:0 ;background-color:#fff;color:#09c786;
+                            border:1px dashed #09c786;">添加附件</button>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <button class="class_button">取消</button>
+                    <button class="class_button">创建</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/jquery.min.js"></script>
+    <script type="text/javascript">
+        var i = 0; //初始化
+        var j = 0;
+        var o = 0;
+        var check = false; //是否选择答案
+        var danxuan = []; //选择答案的数组---取最后一次记录
+        //按钮事件
+        $("#button").on("click", "button", function () {
+            var e = $(this);
+            var i = e.attr("i");
+            e.css({
+                "background-color": "#fafafa",
+                color: "#0c72f7",
+                "border": "1px solid #aaa",
+                "border-bottom": "0",
+                "border-top-right-radius": "5px",
+                "border-top-left-radius": "5px"
+            }).animate({
+                top: '-7px'
+            }).siblings(e).css({
+                "background-color": "#fff",
+                color: "#777",
+                "border": "1px solid #ddd",
+                "border-top-right-radius": "0",
+                "border-top-left-radius": "0"
+            }).animate({
+                top: '-14px'
+            });
+            $("#" + i).show().siblings(e).hide();
+        })
+
+        //删除单选
+        function del() {
+            i--;
+            $("#add").children(":last-child").remove();
+            $("#add1").children(":last-child").remove();
+        }
+        //添加单选
+        function add() {
+            i++;
+            var arr = ["C", "D", "E", "F", "G", "H", "I", "J", "K"]
+            var html = $(`
+        <div class="display_center" style="margin:15px 0">
+             <div style="width: 100px;">
+                 <div class="class_color_font" style="margin-left:10px;width: 30px;height:30px;line-height: 30px;text-align: center;background-color:#09c786;color:#fff">${arr[i-1]}</div>
+              </div>
+               <input type="text" placeholder="请输入选项内容" class="class_input" style="width:500px" id="input_${arr[i-1]}" s="${arr[i-1]}"> <span class="class_color_font" style="color:#09c786;margin-left:15px;cursor: pointer;" onclick="del()">移除</span>
+         </div>
+        `)
+            var html1 = $(`
+        <label style="float: left;"><input name="Fruit" type="radio" value="${arr[i-1]}" onclick="check=true"/><span class="class_color_font" style="margin-left:10px">正确答案:<span style="margin-left:10px">${arr[i-1]}</span> </span> </label>
+        `)
+            $("#add").append(html);
+            $("#add1").append(html1);
+            //单选选择按钮
+            $(":radio").click(function () {
+                var e = $(this);
+                danxuan.push(e.val());
+                console.log(danxuan);
+            });
+        }
+        //删除多选
+        function del_duoxuan() {
+            j--;
+            $("#add_duoxuan").children(":last-child").remove();
+            $("#add_duoxuan1").children(":last-child").remove();
+        }
+        //添加多选
+        function add_duoxuan() {
+            j++;
+            var arr = ["C", "D", "E", "F", "G", "H", "I", "J", "K"]
+            var html = $(`
+        <div class="display_center" style="margin:15px 0">
+             <div style="width: 100px;">
+                 <div class="class_color_font" style="margin-left:10px;width: 30px;height:30px;line-height: 30px;text-align: center;background-color:#09c786;color:#fff">${arr[j-1]}</div>
+              </div>
+               <input type="text" placeholder="请输入选项内容" class="class_input" style="width:500px"> <span class="class_color_font" style="color:#09c786;margin-left:15px;cursor: pointer;" onclick="del_duoxuan()">移除</span>
+         </div>
+        `)
+            var html1 = $(`
+                <span class="F">
+                    <input type="checkbox" name="" id="" value="${arr[j-1]}"><span class="class_color_font" style="margin-left: 10px;">正确答案:${arr[j-1]}</span>
+                </span>
+        `)
+            $("#add_duoxuan").append(html);
+            $("#add_duoxuan1").append(html1);
+            $(":checkbox").click(function () {
+                var e = $(this);
+                if (e.is(":checkbox")) {
+                    console.log("未选中")
+                } else {
+                    console.log(e.val());
+                }
+
+            });
+        }
+        //删除关键字
+        function del_guanjianzi(i) {
+            $("#" + i).remove();
+        }
+        //添加关键字
+        function add_guanjianzi() {
+            o++;
+            var html = $(`
+        <div class="display_center" style="margin:0;margin-top: 10px;" id="div${o}">
+            <div style="width: 100px;">
+            <span style="color:red"></span>
+            <span class="class_color_font" style="margin-right:20px"></span>
+            </div>
+            <input type="text" class="class_input" style="width:280px" placeholder="请输入20个以内关键字">
+            <span class="class_color_font" style="color:#09c786;margin-left:15px;cursor: pointer;" onclick="del_guanjianzi('div'+${o})">移除</span>
+         </div>
+        `)
+
+            $("#add_guanjianzi").append(html);
+        }
+        //单选按钮
+        $(":radio").click(function () {
+            var e = $(this);
+
+            danxuan.push(e.val());
+            console.log(danxuan);
+        });
+        $(":checkbox").click(function () {
+            var e = $(this);
+            if (e.is(":checkbox")) {
+                console.log("未选中")
+            } else {
+                console.log(e.val());
+            }
+
+        });
+
+        function fun() {
+            //获取单选按钮的值 -----单选
+            var duanxuanA = danxuan[danxuan.length - 1];
+            //获取难易程度 
+            var nanyichengdu = $("select[name='select'] option:selected").val();
+            //获取题目
+            var timu = $("#Ti_MU").val();
+            if (check == false) {
+                alert("请选择正确答案！");
+                return;
+            }
+            if (nanyichengdu == "1") {
+                alert("请选择难易程度");
+                return;
+            }
+            if (timu == "") {
+                alert("题目不能为空");
+                return;
+            }
+            var a = $("#add").children();
+            //获取多个答案
+            $.each(a, function () {
+                var input = $(this).find("input");
+                var id = input.attr("s");
+                var content = input.val();
+                obj.push({
+                    id,
+                    content
+                });
+                console.log(obj);
+            })
+        }
+        var obj = [];
+    </script>
+    <script type="text/javascript">
+        var reader;
+        document.getElementById('file').onchange = function () {
+            var imgfile = this.files;
+            for (var i = 0, len = imgfile.length; i < len; i++) {
+                var imageType = /^image\//;
+                if (!imageType.test(imgfile[i].type)) {
+                    console.log('文件：' + imgfile[i].name + '不是图片，请选择图片！');
+                    alert('文件：' + imgfile[i].name + '不是图片，请选择图片！');
+                    continue;
+                } else {
+                    if (imgfile[i].size > 300 * 1024) {
+                        console.log('图片尺寸不超过300kb！');
+                        alert('图片尺寸不超过300kb！')
+                        continue;
+                    } else {
+                        var img = document.createElement('img');
+                        document.getElementById('img-cont').appendChild(img);
+
+                        reader = new FileReader();
+                        reader.onload = (function (img) {
+                            return function (e) {
+                                img.src = e.target.result;
+                                console.log(e.target.result); //图片路径
+                            }
+                        })(img);
+                        reader.readAsDataURL(imgfile[i]);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>添加试卷</title>
+  <link rel="stylesheet" href="../css/jtoggler.styles.css" />
+  <link rel="stylesheet" href="../css/style_kaoshi.css" />
+  <style></style>
+</head>
+
+<body>
+  <div id="T_k">
+    <!-- 结构上 -->
+    <div class="T_K_shang">
+      <!-- 标题 -->
+      <div class="class_header border_0">
+        <h4 class="class_title padding_bottom" style="border-bottom: 4px solid #eee;">
+          考试设置
+        </h4>
+      </div>
+    </div>
+    <!-- 结构下 -->
+    <div class="T_K_xia padding_30 padding_top_0">
+      <div class="border_1 padding_30 padding_top_0" style="border-radius: 3px;">
+        <!-- 基本信息 -->
+        <div class="display_center">
+          <div class="width_100">
+            <span class="class_color_lan">|</span>
+            <span class="class_color_font class_color_lan margin_right_20">任务信息</span>
+          </div>
+        </div>
+        <div class="margin_left_20">
+          <div class="display_center">
+            <div class="width_100">
+              <span class="class_color_red">*</span>
+              <span class="class_color_font margin_right_20">任务名称</span>
+            </div>
+            <input type="text" class="class_input" placeholder="请输入任务名称，30字以内" />
+          </div>
+          <div class="display_center">
+            <div class="width_100">
+              <span class="class_color_red">*</span>
+              <span class="class_color_font">有效期至</span>
+            </div>
+            <input type="text" class="class_input" value="" />
+          </div>
+          <div class="display_center">
+            <div class="width_100">
+              <span class="class_color_red">*</span>
+              <span class="class_color_font">试卷类型</span>
+            </div>
+            <label class="float_left"><input name="Fruit" type="radio" value="A" onclick="check=true" /><span
+                class="class_color_font margin_left_5">固定试卷</span></label>
+            <label class="float_left margin_left_20"><input name="Fruit" type="radio" value="B"
+                onclick="check=true" /><span class="class_color_font margin_left_5">随机试卷</span>
+            </label>
+          </div>
+          <div class="display_center">
+            <div class="width_100">
+              <span class="class_color_red">*</span>
+              <span class="class_color_font">选择类型</span>
+            </div>
+            <input type="text" class="class_input" disabled />
+            <span class="class_color_font margin_left_20"
+              style="color: rgb(31, 158, 180); cursor: pointer;">+选择试卷</span>
+          </div>
+          <div class="display_center">
+            <div class="width_100">
+              <span class="class_color_red">*</span>
+              <span class="class_color_font margin_right_20">及格线</span>
+            </div>
+            <div class="fengshuqi fengshuqi_2 margin_right_20">
+              <span>+</span>
+              <span id="num_10">60</span>
+              <span>-</span>
+            </div>
+            <span class="class_color_font margin_right_20">%</span>
+            <span class="class_color_font class_color_lan">
+              及格分(<span id="jige"></span>) = 总分 (<span id="zong"></span>)
+              X 及格线 (<span id="num_bai"></span>) %
+            </span>
+          </div>
+          <div class="display_center">
+            <div class="width_100">
+              <span class="class_color_red">*</span>
+              <span class="class_color_font margin_right_20">考试时长</span>
+            </div>
+            <div class="fengshuqi fengshuqi_2 margin_right_20">
+              <span>+</span>
+              <span id="num_10">60</span>
+              <span>-</span>
+            </div>
+            <span class="class_color_font margin_right_20">分</span>
+          </div>
+          <div class="display_center">
+            <div class="width_100">
+              <span class="class_color_red">*</span>
+              <span class="class_color_font margin_right_20">指派人员</span>
+            </div>
+            <button class="class_button">人员选择</button>
+            <span class="class_color_font margin_left_15">无</span>
+          </div>
+        </div>
+        <!-- 更多设置 -->
+        <div class="display_center">
+          <div style="width: 120px;">
+            <span class="class_color_lan">|</span>
+            <span class="class_color_font class_color_lan margin_right_20">更多设置</span>
+          </div>
+        </div>
+        <div class="border_1 margin_left_20 padding_20" style="
+              box-shadow: 0px 0 15px #aaa;
+              border-color: #ddd;
+              border-radius: 10px;
+            ">
+          <div class="display_flex align-items">
+            <label>
+              <input type="checkbox" class="jtoggler" />
+            </label>
+            <span class="class_color_font margin_left_15">允许重复考试</span>
+          </div>
+          <div style="padding: 20px 0 20px 40px; display: none;" id="show">
+            <label class="float_left"><input name="Fruit" type="radio" value="A" onclick="check=true" /><span
+                class="class_color_font margin_left_5">学员及格后完成重考</span></label>
+            <label class="float_left margin_left_20"><input name="Fruit" type="radio" value="B"
+                onclick="check=true" /><span class="class_color_font margin_left_5">考试结束前无限重考</span>
+            </label>
+            <label class="float_left margin_left_20"><input name="Fruit" type="radio" value="C"
+                onclick="check=true" /><span class="class_color_font margin_left_5">自定义重考次数</span>
+            </label>
+          </div>
+          <div style="text-align: left; padding: 20px 0 0 0;" class="class_color_font class_color_lan">
+            学员成绩更新
+          </div>
+          <div style="padding: 20px 0 20px 40px;">
+            <label class="float_left"><input name="Fruit" type="radio" value="A" onclick="check=true" /><span
+                class="class_color_font margin_left_5">记录学员最新成绩</span></label>
+            <label class="float_left margin_left_20"><input name="Fruit" type="radio" value="B"
+                onclick="check=true" /><span class="class_color_font margin_left_5">记录学员最高成绩</span>
+            </label>
+          </div>
+          <div style="text-align: left; padding: 20px 0 0 0;" class="class_color_font class_color_lan">
+            查看答案及解析
+          </div>
+          <div style="padding: 20px 0 20px 40px;">
+            <label class="float_left"><input name="Fruit" type="radio" value="A" onclick="check=true" /><span
+                class="class_color_font margin_left_5">交卷后可查看</span></label>
+            <label class="float_left margin_left_20"><input name="Fruit" type="radio" value="B"
+                onclick="check=true" /><span class="class_color_font margin_left_5">不允许查看</span>
+            </label>
+            <label class="float_left margin_left_20"><input name="Fruit" type="radio" value="B"
+                onclick="check=true" /><span class="class_color_font margin_left_5">及格后查看</span>
+            </label>
+          </div>
+          <div style="text-align: left; padding: 20px 0 0 0;" class="class_color_font class_color_lan">
+            阅卷方式
+          </div>
+          <div style="padding: 20px 0 20px 40px;">
+            <label class="float_left"><input name="Fruit" type="radio" value="A" onclick="check=true" /><span
+                class="class_color_font margin_left_5">系统阅卷</span></label>
+            <label class="float_left margin_left_20"><input name="Fruit" type="radio" value="B"
+                onclick="check=true" /><span class="class_color_font margin_left_5">人工阅卷</span>
+            </label>
+          </div>
+          <div style="text-align: left; padding: 20px 0 0 0;" class="class_color_font class_color_lan">
+            知识点
+            <span class="class_color_font margin_left_5">学员作答或查看时</span>
+          </div>
+          <div style="padding: 20px 0 20px 40px;">
+            <label class="float_left"><input name="Fruit" type="radio" value="A" onclick="check=true" /><span
+                class="class_color_font margin_left_5">显示</span></label>
+            <label class="float_left margin_left_20"><input name="Fruit" type="radio" value="B"
+                onclick="check=true" /><span class="class_color_font margin_left_5">隐藏</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center;">
+      <button class="class_button">取消</button>
+      <button class="class_button">保存</button>
+    </div>
+  </div>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/jtoggler.js" type="text/javascript"></script>
+  <script>
+    $(document).ready(() => {
+      $('.jtoggler').jtoggler()
+      $(document).on('jt:toggled', function (event, target) {
+        if ($(target).prop('checked') == false) {
+          $('#show').hide()
+        } else {
+          $('#show').show()
+        }
+      })
+    })
+  </script>
+  <script type="text/javascript">
+    var num = 0 //总数
+    var jige = 0 //及格数
+    var num_bai = $('#num_10').html()
+    //分数计算机
+    $('.fengshuqi_1').on('click', 'span', function () {
+      var a = $(this).html()
+      if (a == '+') {
+        var add = $(this).next().html()
+        add++
+        $(this).next().html(add)
+        $(this).parent().parent().prev().html(add)
+      }
+      if (a == '-') {
+        var jian = $(this).prev().html()
+        if (jian != 1) {
+          jian--
+          $(this).prev().html(jian)
+          $(this).parent().parent().prev().html(jian)
+        } else {
+          jian = 1
+          $(this).prev().html(jian)
+          $(this).parent().parent().prev().html(jian)
+        }
+      }
+      //总数局部改变
+      var num = 0
+      $('.num').each(function () {
+        num += Number($(this).html())
+      })
+      $('#zongfen').html(num) //页面总分
+      $('#zong').html(num) //及格线---总分
+    })
+    //总数全局改变
+    $('.num').each(function () {
+      num += Number($(this).html())
+    })
+    $('#zongfen').html(num) //页面总分
+    //百分数计算器
+    $('.fengshuqi_2').on('click', 'span', function () {
+      var a = $(this).html()
+      var jige = 0 //及格数
+      var num_bai = $('#num_10').html() //当前百分数
+      if (a == '+') {
+        var add = $(this).next().html()
+        if (add != 100) {
+          add++
+          num_bai++
+          $(this).next().html(add)
+        } else {
+          add = 100
+          $(this).next().html(add)
+        }
+      }
+      if (a == '-') {
+        var jian = $(this).prev().html()
+        if (jian != 10) {
+          jian--
+          num_bai--
+          $(this).prev().html(jian)
+        } else {
+          jian = 10
+          $(this).prev().html(jian)
+        }
+      }
+      //局部改变
+      jige = num * (num_bai * 0.01) //及格线---及格数运算
+      $('#jige').html(parseFloat(jige)) //及格线---及格数
+      $('#num_bai').html(num_bai) //及格线---百分数
+    })
+    // 全局改变
+    $('#zong').html(num) //及格线---总数
+    $('#num_bai').html(num_bai) //及格线---百分数
+    jige = num * (num_bai * 0.01) //及格线---及格数运算
+    $('#jige').html(parseFloat(jige)) //及格线---及格数
+  </script>
+</body>
+
+</html>

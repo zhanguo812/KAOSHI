@@ -1,0 +1,38 @@
+.jtoggler {
+    display: none;
+}
+
+.jtoggler-control {
+    position: relative;
+    width: 50px;
+    height: 20px;
+    background: #fff;
+    border-radius: 30px;
+    border: 1px solid #ddd;
+    transition: background-color 0.3s;
+}
+
+.jtoggler-control:hover {
+    cursor: pointer;
+}
+
+.jtoggler-control .jtoggler-handle {
+    display: block;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: calc(50% - 11px);
+    left: 0;
+    background: #fff;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    transition: left 0.3s;
+}
+
+.jtoggler:checked+.jtoggler-control {
+    background: #2a76d8;
+}
+
+.jtoggler:checked+.jtoggler-control .jtoggler-handle {
+    left: 28px;
+}

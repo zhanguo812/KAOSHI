@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>题库管理</title>
+    <link rel="stylesheet" href="../css/style_kaoshi.css">
+</head>
+
+<body>
+    <div id="T_k">
+        <!-- 结构上 -->
+        <div class="T_K_shang">
+            <!-- 标题 -->
+            <div class="class_header">
+                <h4 class="class_title">题库资源列表</h4>
+            </div>
+            <div class="T_K_shang_content">
+                <div class="T_K_shang_sou">
+                    <input type="text" placeholder="请输入关键字搜索" class="class_input"><button
+                        class="class_button">搜索</button>
+                </div>
+                <form action="" method="post" id="T_ku">
+                    <div>
+                        <div style="padding:0 30px;">
+                            <h5 style="border-bottom:1px dashed #ddd;padding-bottom:5px;">新增题库</h5>
+                            <div class="class_addTk" style="border-bottom:1px dashed #ddd;">
+                                <div>
+                                    <span class="class_color_font" style="margin-right: 10px;">题库名称:</span><input
+                                        type="text" placeholder="请输入题库名称(不超过50个字)" class="class_input">
+                                </div>
+                                <div>
+                                    <span class="class_color_font" style="margin-right: 10px;">题库标签:</span><input
+                                        type="text" placeholder="请输入题库标签" class="class_input">
+                                </div>
+                                <div>
+                                    <span class="class_color_font" style="margin-right: 10px;">题库顺序:</span><input
+                                        type="text" placeholder="只限于数字，例如：0 1" class="class_input">
+                                </div>
+                                <button class="class_button" onclick="T_ku()">添加题库</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- 结构下 -->
+        <div class="T_K_xia">
+            <table class="Width">
+                <thead>
+                    <tr>
+                        <td><input type="checkbox" name="" id=""></td>
+                        <td class="w-40">题库</td>
+                        <td>标签</td>
+                        <td>创建者</td>
+                        <td>创建时间</td>
+                        <td>单选题</td>
+                        <td>多选题</td>
+                        <td>判断题</td>
+                        <td>填空题</td>
+                        <td>解答题</td>
+                        <td></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox" name="" id=""></td>
+                        <td class="w-40">危险性较大的分部分项工程安全管理</td>
+                        <td>--</td>
+                        <td>候占国</td>
+                        <td>2020-06-10</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td><a href="javasctipt:;">删除</a></td>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" name="" id=""></td>
+                        <td class="w-40">危险性较大的分部分项工程安全管理</td>
+                        <td>--</td>
+                        <td>候占国</td>
+                        <td>2020-06-10</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td><a href="javasctipt:;">删除</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function T_ku() {
+            $("#T_ku").attr("action") = "1";
+            $("#T_ku").submit();
+        }
+    </script>
+</body>
+
+</html>
