@@ -6,9 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>考试任务管理</title>
   <link rel="stylesheet" href="../css/style_kaoshi.css">
-  <style>
-    
-  </style>
 </head>
 
 <body>
@@ -17,36 +14,32 @@
     <div class="T_K_shang">
       <!-- 标题 -->
       <div class="class_header border_0 padding_bottom_0">
-        <h4 class="class_title padding_bottom_15" style="border-bottom:4px solid #eee;">考试任务管理</h4>
+        <h4 class="class_title padding_bottom_15" style="border-bottom:4px solid #eee;">练习任务管理</h4>
       </div>
       <div class="T_K_shang_content">
         <div>
           <div style="padding:0 30px;">
-            <div class="class_addTk">
+            <div class="class_addTk" style="border-bottom:1px dashed #ddd;">
               <div></div>
-              <div class="display_arond" style="justify-content: space-between;">
-                <div class="display_arond" style="width: 160px;" style="justify-content: space-around;">
-                  <span class="class_color_font">状态选择</span>
-                  <div id="dropdown" class="class_color_font select_T ">
-                    <p style="padding-left: 10px;">全部</p>
-                    <ul>
-                      <li><a href="javaScript:;" rel="1">全部</a></li>
-                      <li><a href="javaScript:;" rel="1">未开始</a></li>
-                      <li><a href="javaScript:;" rel="2">进行中</a></li>
-                      <li><a href="javaScript:;" rel="3">已结束</a></li>
-                    </ul>
-                  </div>
+              <div>
+                <input type="text" class="class_input" placeholder="请输入关键字搜索">
+                <button class="class_button">搜索</button>
+              </div>
+            </div>
+            <div class="class_addTk" style="border-bottom:1px dashed #ddd;">
+              <div><span class="class_color_font">练习列表</span></div>
+              <div class="display_arond" style="width: 300px;">
+                <span class="class_color_font">状态选择</span>
+                <div id="dropdown" class="class_color_font select_T">
+                  <p style="padding-left: 10px;">全部</p>
+                  <ul>
+                    <li><a href="javaScript:;" rel="1">全部</a></li>
+                    <li><a href="javaScript:;" rel="1">未开始</a></li>
+                    <li><a href="javaScript:;" rel="2">进行中</a></li>
+                    <li><a href="javaScript:;" rel="3">已结束</a></li>
+                  </ul>
                 </div>
-                <div>
-
-                  <input type="text" class="class_input margin_left_20" placeholder="请输入关键字搜索">
-                  <button class="class_button">搜索</button>
-                  <button class="class_button">修改</button>
-                  <button class="class_button dengder">删除</button>
-                  <button class="class_button">人员变更</button>
-                  <button class="class_button border_0" style="background:rgb(250, 189, 20);">新增考试</button>
-
-                </div>
+                <button class="class_button border_0" style="background:rgb(250, 189, 20);">新增练习</button>
               </div>
             </div>
           </div>

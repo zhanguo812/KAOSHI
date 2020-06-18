@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>我的考试任务</title>
+  <link rel="stylesheet" href="../css/style_kaoshi.css">
+</head>
+<style>
+  #T_K_xia:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .noBujige {
+    border: 1px solid #000;
+    border-color: rgb(250, 10, 10);
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 5px;
+    color: rgb(240, 69, 69);
+  }
+
+  .userInfo {
+    width: 350px;
+    height: 155px;
+    border-radius: 5px;
+    box-shadow: 0 0 1px rgb(7, 68, 199);
+    background-color: #fefefe;
+  }
+
+  .font_color_111 {
+    color: #111;
+  }
+
+  .jige {
+    border: 1px solid #000;
+    border-color: rgb(15, 211, 129);
+    border-radius: 5px;
+    font-size: 12px;
+    padding: 5px;
+    color: rgb(15, 211, 129);
+  }
+
+  .cur_p {
+    cursor: pointer;
+  }
+</style>
+
+<body>
+  <div id="T_k">
+    <!-- 结构上 -->
+    <div class="T_K_shang">
+      <!-- 标题 -->
+      <div class="class_header border_0 padding_bottom_0">
+        <h4 class="class_title padding_bottom_15" style="border-bottom:4px solid #eee;">我的考试任务</h4>
+      </div>
+      <div class="T_K_shang_content">
+        <div>
+          <div style="padding:0 30px;">
+            <div class="class_addTk" style="border-bottom:1px dashed #ddd;">
+              <div></div>
+
+              <div class="display_arond">
+                <div class="display_arond" style="width: 140px;">
+                  <span class="class_color_font">筛选</span>
+                  <div id="dropdown" class="class_color_font select_T">
+                    <p style="padding-left: 10px;">全部</p>
+                    <ul>
+                      <li><a href="javaScript:;" rel="1">全部</a></li>
+                      <li><a href="javaScript:;" rel="1">未完成</a></li>
+                      <li><a href="javaScript:;" rel="2">及格</a></li>
+                      <li><a href="javaScript:;" rel="3">不及格</a></li>
+                      <li><a href="javaScript:;" rel="3">缺考</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div>
+                  <input type="text" class="class_input margin_left_15" placeholder="请输入关键字搜索">
+                  <button class="class_button">搜索</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 结构下 -->
+    <div class="T_K_xia padding_30 padding_top_0">
+      <div class="border_1 margin_left_15 margin_top_20 float_left userInfo">
+        <div class="display_flex padding_10" style="justify-content: space-between; align-items: center;">
+          <div style="width: 150px;" class="class_color_font display_flex align_items_center">
+            <img src="" alt="">
+            <span class="margin_left_15">候占国</span>
+          </div>
+          <div class="noBujige">
+            <span>不及格</span>
+          </div>
+          <div class="jige">
+            <span>及格</span>
+          </div>
+        </div>
+        <div class="padding_10 class_color_font">
+          <p class="padding_bottom_10 font_color_111">
+            2020-06月份考试任务
+          </p>
+          <p>
+            <span>2020-06-16 11:12:30</span>
+            <span>--</span>
+            <span>2020-06-16 11:12:30</span>
+          </p>
+        </div>
+        <div class="display_flex align_items_center padding_10" style="justify-content: space-between;">
+          <div class="class_color_font display_flex align_items_center font_color_111">
+            <div>
+              <span>考试</span>
+              <span>9</span>
+              <span>次</span>
+            </div>
+            <div class=" margin_left_15">
+              <span>总分</span>
+              <span>3.0</span>
+            </div>
+            <div class="margin_left_15">
+              <span>等分</span>
+              <span>0</span>
+            </div>
+          </div>
+          <div class="class_color_font class_color_lan">
+            <span class="cur_p">重考</span>
+            <span class="cur_p">答案解析</span>
+          </div>
+        </div>
+      </div>
+      <div class="border_1 margin_left_15 margin_top_20 float_left userInfo">
+        <div class="display_flex padding_10" style="justify-content: space-between; align-items: center;">
+          <div style="width: 150px;" class="class_color_font display_flex align_items_center">
+            <img src="" alt="">
+            <span class="margin_left_15">候占国</span>
+          </div>
+          <div class="noBujige">
+            <span>不及格</span>
+          </div>
+          <div class="jige">
+            <span>及格</span>
+          </div>
+        </div>
+        <div class="padding_10 class_color_font">
+          <p class="padding_bottom_10 font_color_111">
+            2020-06月份考试任务
+          </p>
+          <p>
+            <span>2020-06-16 11:12:30</span>
+            <span>--</span>
+            <span>2020-06-16 11:12:30</span>
+          </p>
+        </div>
+        <div class="display_flex align_items_center padding_10" style="justify-content: space-between;">
+          <div class="class_color_font display_flex align_items_center font_color_111">
+            <div>
+              <span>考试</span>
+              <span>9</span>
+              <span>次</span>
+            </div>
+            <div class=" margin_left_15">
+              <span>总分</span>
+              <span>3.0</span>
+            </div>
+            <div class="margin_left_15">
+              <span>等分</span>
+              <span>0</span>
+            </div>
+          </div>
+          <div class="class_color_font class_color_lan">
+            <span class="cur_p">重考</span>
+            <span class="cur_p">答案解析</span>
+          </div>
+        </div>
+      </div>
+      <div class="border_1 margin_left_15 margin_top_20 float_left userInfo">
+        <div class="display_flex padding_10" style="justify-content: space-between; align-items: center;">
+          <div style="width: 150px;" class="class_color_font display_flex align_items_center">
+            <img src="" alt="">
+            <span class="margin_left_15">候占国</span>
+          </div>
+          <div class="noBujige">
+            <span>不及格</span>
+          </div>
+          <div class="jige">
+            <span>及格</span>
+          </div>
+        </div>
+        <div class="padding_10 class_color_font">
+          <p class="padding_bottom_10 font_color_111">
+            2020-06月份考试任务
+          </p>
+          <p>
+            <span>2020-06-16 11:12:30</span>
+            <span>--</span>
+            <span>2020-06-16 11:12:30</span>
+          </p>
+        </div>
+        <div class="display_flex align_items_center padding_10" style="justify-content: space-between;">
+          <div class="class_color_font display_flex align_items_center font_color_111">
+            <div>
+              <span>考试</span>
+              <span>9</span>
+              <span>次</span>
+            </div>
+            <div class=" margin_left_15">
+              <span>总分</span>
+              <span>3.0</span>
+            </div>
+            <div class="margin_left_15">
+              <span>等分</span>
+              <span>0</span>
+            </div>
+          </div>
+          <div class="class_color_font class_color_lan">
+            <span class="cur_p">重考</span>
+            <span class="cur_p">答案解析</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../js/jquery.min.js"></script>
+  <script type="text/javascript">
+    $('#dropdown p').click(function () {
+      var ul = $('#dropdown ul')
+      if (ul.css('display') == 'none') {
+        ul.slideDown('fast')
+      } else {
+        ul.slideUp('fast')
+      }
+      $('#dropdown ul li a').click(function () {
+        var txt = $(this).text()
+        $('#dropdown p').html(txt)
+        var value = $(this).attr('rel')
+        $('#dropdown ul').hide()
+        $('#result').html('您选择了' + txt + '，值为：' + value)
+      })
+    })
+  </script>
+</body>
+
+</html>

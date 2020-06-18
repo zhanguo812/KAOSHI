@@ -1,0 +1,42 @@
+@font-face {
+	font-family: "iconfont";
+	src: url('iconfont.eot?t=1592469216215');
+	/* IE9 */
+	src: url('iconfont.eot?t=1592469216215#iefix') format('embedded-opentype'),
+		/* IE6-IE8 */
+		url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAALQAAsAAAAABsQAAAKCAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDBgqBEIESATYCJAMMCwgABCAFhG0HUhv0BcgekiQlqrNAEQ4oAYMB8fC0X79zZ+a9r5ZELIomkkrchETq/oZpaJROpAS6Z/JeTlXpHLD7j2fDoK6FsqjnS5ElW773u4sXli0Cg0gK4EJl7YgbJVk+z+X0JtCBrL5lucwxnh/1AowDCnQPjCIrogC4pXYRJwSt/MJjAp0mVFXOz2/7YkGBVgXikVaBWGjlFCVqtgv1yMEi3qu0pxdpQngnvx//tGOBpMrQxsuNs1gc/vTvUm62mu5zQp7gHq+QsUYoxMPR2m3TIuKmddpm5rtrRUhHFVstpK501A/94yWihga7wZJbT/yUKgl+dkQCGdTtxixh02OHLwoxMGgwfm1+eTWmPi5G5ftL63n6Ulou/LZXX5rDMbJrPj9/3bHW23ljc9KPe1vDjeHWnr9lQLzU3tjZkZu4s4teG670dHc3VJwP/Uz6nob0NY0FgomltOut7/9fWC7gBxe/0lfAHe3Pjwf/Sw8cKaUR+XPJdVRXJ7JBQCThauKkFpQa9L3dMQKuENpbxg2JNuMFsnZzZGHXUOmyh1q7I3RadXG8yxAyLUoHVjw7CP3GSHp9Q9bvkyzsFyqj/lHrj2l0uhlDF3ZZCL10RhgwxhA+go5cJkmQl9RwF1VpA2oaJT9EKnQRWvVmt3mBGdIRW4o71WaWIMmlcO48h9Y6yMklGHF9xJx3Gg059qZ65FKx5AxBAYZiIPQIaBEnI/lkttT7fBdSSlaAZmQL1SFECnp20FLXBJAXtgwk+5RXCneUNsYkIBEnBc6dCLK45oB8fF4CRVjdaEMl19HwxkmorX69I/2+U9AJ7cyRIkcx/gx1qjNF1SabJTpwrZ7MsisX3qTLeyqdEAAA') format('woff2'),
+		url('iconfont.woff?t=1592469216215') format('woff'),
+		url('iconfont.ttf?t=1592469216215') format('truetype'),
+		/* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+		url('iconfont.svg?t=1592469216215#iconfont') format('svg');
+	/* iOS 4.1- */
+}
+
+.iconfont {
+	font-family: "iconfont" !important;
+	font-size: 16px;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+[class^="fa-"],
+[class*=" fa-"] {
+	font-family: 'iconfont';
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.fa-chevron-right:before {
+	content: "\e637";
+}
+
+.fa-chevron-left:before {
+	content: "\e64a";
+}

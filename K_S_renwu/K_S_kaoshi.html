@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>考试任务管理</title>
+  <link rel="stylesheet" href="../css/style_kaoshi.css">
+</head>
+<style>
+  .WH_300 {
+    width: 300px;
+    height: 400px;
+    border-radius: 5px;
+    float: left;
+    border-color: #ddd !important;
+    overflow: hidden;
+
+  }
+
+  #addxunhuan {
+    height: 650px;
+    overflow: hidden;
+    overflow-y: auto;
+  }
+
+  /* 设置滚动条的样式 */
+  ::-webkit-scrollbar {
+    width: 4px;
+    background-color: #eee;
+  }
+
+  /* 滚动槽 */
+  ::-webkit-scrollbar-track {
+    border-radius: 10px;
+  }
+
+  /* 滚动条滑块 */
+  ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #999;
+  }
+
+  .WH_300>div:first-child {
+    background-color: #f7f8fb;
+    height: 40px;
+    line-height: 40px;
+    color: #666 !important;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  .WH_zishiyin {
+    float: left;
+    width: calc(100% - 334px);
+    margin-left: 30px;
+  }
+
+  .WH_300::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  .margin_left_15>p {
+    margin-bottom: 7px;
+  }
+
+  .margin_left_15>p:first-child {
+    margin-top: 20px;
+  }
+
+  .text_indent_25 {
+    text-indent: 25px;
+  }
+
+  .kaoshi_jiexi {
+    background-color: #f7f8fb;
+    border: 1px solid #f7f8fb;
+    border-radius: 5px;
+  }
+
+  .select_checked {
+    border-bottom: 1px solid #333;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .select_checked>div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .select_checked_div_div {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #ddd;
+    display: block;
+  }
+
+  .select_checked_div {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #eee;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+  }
+
+  .bg_lan {
+    background-color: #35B2FF;
+    color: #fff;
+  }
+
+  .bg_hong {
+    background-color: #FF5551;
+  }
+
+  p:hover {
+    cursor: pointer;
+  }
+
+  .maoDian_A_Hover:hover {
+    background-color: #09c786;
+    color: #fff;
+  }
+</style>
+
+<body>
+  <div id="T_k">
+    <!-- 结构上 -->
+    <div class="T_K_shang">
+      <!-- 标题 -->
+      <div class="class_header border_0 padding_bottom_0">
+        <h4 class="class_title padding_bottom_15" style="border-bottom:4px solid #eee;">考试任务</h4>
+      </div>
+    </div>
+    <!-- 结构下 -->
+    <div class="T_K_xia padding_30">
+      <!-- 左边答题卡 -->
+      <div class="border_1 WH_300">
+        <div>
+          <p class="text_align_center" style="color:#333">答题卡</p>
+        </div>
+        <!-- 答案正确 错误  未答 -->
+        <div class="margin_20 select_checked">
+          <div>
+            <span class="select_checked_div_div"></span>
+            <span class="class_color_font margin_left_5">未答</span>
+          </div>
+          <div style="display: none;">
+            <span class="select_checked_div_div bg_lan "></span>
+            <span class="class_color_font margin_left_5">已答</span>
+          </div>
+          <!--  显示详情 -->
+          <div>
+            <div class="bg_lan border_0 select_checked_div_div"></div>
+            <span class="class_color_font margin_left_5">正确</span>
+          </div>
+          <div>
+            <div class="bg_hong border_0 select_checked_div_div"></div>
+            <span class="class_color_font margin_left_5">错误</span>
+          </div>
+        </div>
+        <div class="padding_20 gundongtiao" style=" overflow-y: auto;height:240px">
+          <!-- 单选题 -->
+          <div id="danxuan">
+            <h5>单选题（共计<span id="danxuanCount"></span>个题）</h5>
+            <div class="padding_10 display_flex" style="flex-wrap: wrap;" id="select_danxuan">
+              <!-- 循环开始 -->
+              <!-- <div class="select_checked_div margin_left_5 margin_bottom_5 " id="danxuan1">
+                <span>1</span>
+              </div>
+              <div class="select_checked_div margin_left_5 margin_bottom_5" id="danxuan2">
+                <span>2</span>
+              </div> -->
+              <!-- 循环结束-->
+
+            </div>
+          </div>
+          <!-- 多选题 -->
+          <div id="duoxuan">
+            <h5>多选题（共计<span id="duoxuanCount"></span>个题）</h5>
+            <div class="padding_10 display_flex" style="flex-wrap: wrap;" id="select_duoxuan">
+              <!-- 循环开始 -->
+
+              <!-- <div class="select_checked_div margin_left_5 margin_bottom_5" id="duoxuan2">
+                <span>2</span>
+              </div> -->
+              <!-- 循环结束-->
+
+            </div>
+          </div>
+          <!-- 判断题 -->
+          <div>
+            <h5>判断题（共计<span id="panduanCount"></span>个题）</h5>
+            <div class="padding_10 display_flex" style="flex-wrap: wrap;" id="select_panduan">
+              <!-- 循环开始 -->
+              <!-- <div class="select_checked_div margin_left_5 margin_bottom_5 bg_lan">
+                <span>1</span>
+              </div>
+              <div class="select_checked_div margin_left_5 margin_bottom_5">
+                <span>2</span>
+              </div> -->
+              <!-- 循环结束-->
+            </div>
+          </div>
+          <!-- 填空题 -->
+          <div>
+            <h5>填空题（共计<span id="tiankongCount" class="class_color_font"></span>个题）</h5>
+            <div class="padding_10 display_flex" style="flex-wrap: wrap;" id="select_tiankong">
+              <!-- 循环开始 -->
+              <!-- <div class="select_checked_div margin_left_5 margin_bottom_5 bg_lan">
+                <span>1</span>
+              </div>
+              <div class="select_checked_div margin_left_5 margin_bottom_5">
+                <span>2</span>
+              </div> -->
+              <!-- 循环结束-->
+            </div>
+          </div>
+          <!-- 解答题 -->
+          <div>
+            <h5>解答题（共计<span id="jiedaCount"></span>个题）</h5>
+            <div class="padding_10 display_flex" style="flex-wrap: wrap;" id="select_jieda">
+              <!-- 循环开始 -->
+              <!-- <div class="select_checked_div margin_left_5 margin_bottom_5 bg_lan">
+                <span>1</span>
+              </div>
+              <div class="select_checked_div margin_left_5 margin_bottom_5">
+                <span>2</span>
+              </div> -->
+              <!-- 循环结束-->
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 右边考试内容 -->
+      <div class="border_1 WH_zishiyin">
+        <h4 class="text_align_center padding_1">2020-06月份考试任务</h4>
+        <div class="padding_30 padding_top_bottom_0 border_bottom_1">
+          <!-- 试卷头部 -->
+          <div class="class_color_font display_flex" style="justify-content: space-between;align-items: center;">
+            <div>
+              <div class="padding_bottom_15">
+                姓名:<span>候占国</span> <span class="margin_left_15">所属部门:</span><span>无</span>
+              </div>
+              <div class="padding_bottom_15">
+                试卷总分:<span>3.0</span>分<span class="margin_left_15">及格分数:</span><span>2.0</span>分
+              </div>
+            </div>
+            <div style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+              <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3530787897,2713939712&fm=26&gp=0.jpg"
+                alt="" style="width: 80px; height: 80px;border-radius: 50%;">
+              <span>交卷时间：2020-06-15 19:21:04</span>
+            </div>
+          </div>
+        </div>
+        <div class="padding_30 padding_top_0" id="addxunhuan">
+          <!-- 试卷内容   需要循环开始 -->
+          <!-- <div class="padding_30 padding_bottom_0 select_checked_p">
+            <div style="color:#000"><span>1</span>.<span>【多选题】</span> 护栏、扶手安全十分重要，故每个检验批应( B ).</div>
+            <div class="margin_left_15" select_id="duoxuan1">
+              <p class="class_color_font pHover  margin-10"><input type="checkbox" name="duoxuan1" id="" value="A">
+                A.抽查3处</p>
+              <p class="class_color_font pHover margin-10"><input type="checkbox" name="duoxuan1" id="" value="B">
+                B.抽查3处</p>
+              <p class="class_color_font pHover margin-10"> <input type="checkbox" name="duoxuan1" id="" value="C">
+                C.抽查3处</p>
+              <p class="class_color_font pHover margin-10"><input type="checkbox" name="duoxuan1" id="" value="D">
+                D.抽查3处</p>
+              <div class="padding_20 class_color_font kaoshi_jiexi">
+                <h5 style="display: none;" class="class_color_red class_font_17 padding_top_bottom_5">回答错误:
+                  <span>A</span></h5>
+                <h5 style="display: none;" class="class_color_success class_font_17 padding_top_bottom_5">回答正确:
+                  <span>A</span></h5>
+                <div style="display: none;">
+                  <h4 class="padding_top_bottom_5">解析：</h4>
+                  <p class="padding_top_bottom_5 text_indent_25">1232143</p>
+                </div>
+                <h4 class="padding_top_bottom_5">知识点：</h4>
+                <p class="padding_top_bottom_5 text_indent_25">暂无</p>
+              </div>
+            </div>
+          </div> -->
+          <!-- 试卷内容   需要循环结束 -->
+          <!-- 试卷内容   需要循环开始 -->
+          <!-- <div class="padding_30 padding_bottom_0 select_checked_p">
+            <div style="color:#000"><span>2</span>.<span>【单选题】</span> 护栏、扶手安全十分重要，故每个检验批应( B ).</div>
+            <div class="margin_left_15" select_id="danxuan1">
+              <p class="class_color_font pHover  margin-10"> <input type="radio" name="danxuan1" id="" value="A"> A.抽查3处
+              </p>
+              <p class="class_color_font pHover margin-10"> <input type="radio" name="danxuan1" id="" value="B"> B.抽查3处
+              </p>
+              <p class="class_color_font pHover margin-10"> <input type="radio" name="danxuan1" id="" value="C"> C.抽查3处
+              </p>
+              <p class="class_color_font pHover margin-10"> <input type="radio" name="danxuan1" id="" value="D"> D.抽查3处
+              </p>
+              <div class="padding_20 class_color_font kaoshi_jiexi">
+                <h5 style="display: none;" class="class_color_red class_font_17 padding_top_bottom_5">回答错误:
+                  <span>A</span></h5>
+                <h5 style="display: none;" class="class_color_success class_font_17 padding_top_bottom_5">回答正确:
+                  <span>A</span></h5>
+                <div style="display: none;">
+                  <h4 class="padding_top_bottom_5">解析：</h4>
+                  <p class="padding_top_bottom_5 text_indent_25">1232143</p>
+                </div>
+                <h4 class="padding_top_bottom_5">知识点：</h4>
+                <p class="padding_top_bottom_5 text_indent_25">暂无</p>
+              </div>
+            </div>
+          </div> -->
+          <!-- 试卷内容   需要循环结束 -->
+          <!-- 试卷内容   需要循环开始 -->
+          <!-- <div class="padding_30 padding_bottom_0 select_checked_p">
+            <div style="color:#000" class="display_flex margin_bottom_5">
+              <span>3</span>.
+              <span>【填空题】</span>
+              护栏、扶手安全十分重要，故每个检验批应
+              <div class="border_bottom_1">
+                <input type="text" class="class_input border_0" placeholder="在此填写答案">
+              </div>
+              .</div>
+            <div class="margin_left_15" select_id="danxuan1">
+              <div class="padding_20 class_color_font kaoshi_jiexi">
+                <h5 style="display: none;" class="class_color_red class_font_17 padding_top_bottom_5">回答错误:
+                  <span>A</span></h5>
+                <h5 style="display: none;" class="class_color_success class_font_17 padding_top_bottom_5">回答正确:
+                  <span>A</span></h5>
+                <div style="display: none;">
+                  <h4 class="padding_top_bottom_5">解析：</h4>
+                  <p class="padding_top_bottom_5 text_indent_25">1232143</p>
+                </div>
+                <h4 class="padding_top_bottom_5">知识点：</h4>
+                <p class="padding_top_bottom_5 text_indent_25">暂无</p>
+              </div>
+            </div>
+          </div> -->
+          <!-- 试卷内容   需要循环结束 -->
+          <!-- 试卷内容   需要循环开始 -->
+          <!-- <div class="padding_30 padding_bottom_0 select_checked_p">
+            <div style="color:#000" class="display_flex margin_bottom_5">
+              <span>3</span>.
+              <span>【解答题】</span>
+              护栏、扶手安全十分重要，故每个检验批应？</div>
+            <div class="margin_left_15" select_id="danxuan1">
+              <textarea name="" id="" class="class_input padding_10" style="width: 400px; height:200px"
+                placeholder="在此填写答案"></textarea>
+              <div class="padding_20 class_color_font kaoshi_jiexi">
+                <h5 style="display: none;" class="class_color_red class_font_17 padding_top_bottom_5">回答错误:
+                  <span>A</span></h5>
+                <h5 style="display: none;" class="class_color_success class_font_17 padding_top_bottom_5">回答正确:
+                  <span>A</span></h5>
+                <div style="display: none;">
+                  <h4 class="padding_top_bottom_5">解析：</h4>
+                  <p class="padding_top_bottom_5 text_indent_25">1232143</p>
+                </div>
+                <h4 class="padding_top_bottom_5">知识点：</h4>
+                <p class="padding_top_bottom_5 text_indent_25">暂无</p>
+              </div>
+            </div>
+          </div> -->
+          <!-- 试卷内容   需要循环结束 -->
+        </div>
+      </div>
+    </div>
+    <div class="border_1" style="width: 100%;height:50px;position: fixed;
+    bottom: 0;
+    left: 0;display: flex;justify-content: space-around;align-items:center;z-index: 999;background-color: #f7f8fb">
+      <div><span>倒计时: <span id="setTime"></span> </span></div>
+      <div>
+        <button class="class_button">取消</button>
+        <button class="class_button">提交</button>
+      </div>
+    </div>
+  </div>
+  <script src="../js/jquery.min.js"></script>
+  <script type="text/javascript">
+    /********************测试数据******************/
+    var arr = [{
+        content: ["0", "单选题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "抽查3处",
+          B: "抽查3处",
+          C: "抽查3处",
+          D: "抽查3处"
+        }]
+      },
+      {
+        content: ["0", "单选题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "抽查3处",
+          B: "抽查3处",
+          C: "抽查3处",
+          D: "抽查3处"
+        }]
+      },
+      {
+        content: ["0", "单选题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "抽查3处",
+          B: "抽查3处",
+          C: "抽查3处",
+          D: "抽查3处"
+        }]
+      },
+      {
+        content: ["1", "多选题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "抽查3处",
+          B: "抽查3处",
+          C: "抽查3处",
+          D: "抽查3处"
+        }]
+      },
+      {
+        content: ["1", "多选题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "抽查3处",
+          B: "抽查3处",
+          C: "抽查3处",
+          D: "抽查3处"
+        }]
+      },
+      {
+        content: ["2", "判断题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "对",
+          B: "错",
+        }]
+      },
+      {
+        content: ["3", "填空题", "护栏、扶手安全十分重要，故每个检验批应", {}]
+      },
+      {
+        content: ["4", "解答题", "护栏、扶手安全十分重要，故每个检验批应", {}]
+      },
+      {
+        content: ["0", "单选题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "抽查3处",
+          B: "抽查3处",
+          C: "抽查3处",
+          D: "抽查3处"
+        }]
+      },
+      {
+        content: ["1", "多选题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "抽查3处",
+          B: "抽查3处",
+          C: "抽查3处",
+          D: "抽查3处"
+        }]
+      },
+      {
+        content: ["2", "判断题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "对",
+          B: "错",
+        }]
+      },
+      {
+        content: ["3", "填空题", "护栏、扶手安全十分重要，故每个检验批应", {}]
+      },
+      {
+        content: ["4", "解答题", "护栏、扶手安全十分重要，故每个检验批应", {}]
+      },
+      {
+        content: ["0", "单选题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "抽查3处",
+          B: "抽查3处",
+          C: "抽查3处",
+          D: "抽查3处"
+        }]
+      },
+      {
+        content: ["1", "多选题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "抽查3处",
+          B: "抽查3处",
+          C: "抽查3处",
+          D: "抽查3处"
+        }]
+      },
+      {
+        content: ["2", "判断题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "对",
+          B: "错",
+        }]
+      },
+      {
+        content: ["3", "填空题", "护栏、扶手安全十分重要，故每个检验批应", {}]
+      },
+      {
+        content: ["4", "解答题", "护栏、扶手安全十分重要，故每个检验批应", {}]
+      },
+      {
+        content: ["0", "单选题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "抽查3处",
+          B: "抽查3处",
+          C: "抽查3处",
+          D: "抽查3处"
+        }]
+      },
+      {
+        content: ["1", "多选题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "抽查3处",
+          B: "抽查3处",
+          C: "抽查3处",
+          D: "抽查3处"
+        }]
+      },
+      {
+        content: ["2", "判断题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "对",
+          B: "错",
+        }]
+      },
+      {
+        content: ["3", "填空题", "护栏、扶手安全十分重要，故每个检验批应", {}]
+      },
+      {
+        content: ["4", "解答题", "护栏、扶手安全十分重要，故每个检验批应", {}]
+      },
+      {
+        content: ["0", "单选题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "抽查3处",
+          B: "抽查3处",
+          C: "抽查3处",
+          D: "抽查3处"
+        }]
+      },
+      {
+        content: ["1", "多选题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "抽查3处",
+          B: "抽查3处",
+          C: "抽查3处",
+          D: "抽查3处"
+        }]
+      },
+      {
+        content: ["2", "判断题", "护栏、扶手安全十分重要，故每个检验批应", {
+          A: "对",
+          B: "错",
+        }]
+      },
+      {
+        content: ["3", "填空题", "护栏、扶手安全十分重要，故每个检验批应", {}]
+      },
+      {
+        content: ["4", "解答题", "护栏、扶手安全十分重要，故每个检验批应", {}]
+      }
+    ];
+    var danxuan = []; //单选
+    var duoxuan = []; //多选
+    var panduan = []; //判断
+    var tiankong = []; //填空
+    var jieda = []; //解答
+    var xuanxiang = ""; //保存的选项
+    var j = 0; //试题计数
+    var count = 0; //答题卡计数
+    /********************判断题的类型******************/
+    for (var q = 0; q < arr.length; q++) {
+      if (arr[q].content[0] == "0") { //单选
+        danxuan.push(arr[q]);
+      } else if (arr[q].content[0] == "1") { //多选
+        duoxuan.push(arr[q]);
+      } else if (arr[q].content[0] == "2") { //判断
+        panduan.push(arr[q]);
+      } else if (arr[q].content[0] == "3") { //填空
+        tiankong.push(arr[q]);
+      } else if (arr[q].content[0] == "4") { //解答
+        jieda.push(arr[q]);
+      }
+    }
+    /******************题型个数显示******************/
+    $("#danxuanCount").html(danxuan.length);
+    $("#duoxuanCount").html(duoxuan.length);
+    $("#panduanCount").html(panduan.length);
+    $("#tiankongCount").html(tiankong.length);
+    $("#jiedaCount").html(jieda.length);
+
+    /******************试题函数******************/
+    function add(danxuan) {
+      for (var i = 0; i < danxuan.length; i++) {
+        j++
+        if (danxuan[i].content[0] == "0") { //单选
+          xuanxiang = "";
+          for (var key in danxuan[i].content[3]) {
+            xuanxiang += `
+        <p class="class_color_font pHover  margin-10">
+          <input type="radio" name="danxuan${j}" id="" count="${j}" value="${key}"> ${key} .${danxuan[i].content[3][key]}
+        </p>`
+          }
+        }
+        if (danxuan[i].content[0] == "1") { //多选
+          xuanxiang = "";
+          for (var key in danxuan[i].content[3]) {
+            xuanxiang += `
+        <p class="class_color_font pHover  margin-10">
+          <input type="checkbox" name="duoxuan${j}" id="" count="${j}" value="${key}"> ${key}.${danxuan[i].content[3][key]}
+        </p>
+      `
+          }
+        }
+        if (danxuan[i].content[0] == "2") { //判断
+          xuanxiang = "";
+          for (var key in danxuan[i].content[3]) {
+            xuanxiang += `
+        <p class="class_color_font pHover  margin-10">
+          <input type="radio" name="panduan${j}" id="" count="${j}" value="${key}"> ${key}.${danxuan[i].content[3][key]}
+        </p>
+      `
+          }
+        }
+        if (danxuan[i].content[0] == "3") { //填空
+          xuanxiang = "";
+          xuanxiang += `
+        <div class="border_bottom_1" >
+              <input type="text" class="class_input border_0" count="${j}" placeholder="在此填写答案，用#隔开" value id="tiankongs${j}">
+        </div>
+      `
+        }
+        if (danxuan[i].content[0] == "4") { //解答
+          xuanxiang = "";
+          xuanxiang += `
+            <div id="jiedas${j}">
+              <textarea name="" id="" class="class_input padding_10" style="width: 400px; height:200px"
+                placeholder="在此填写答案"  count="${j}" value=""></textarea>
+            </div>
+      `
+        }
+        var muban = $(`
+      <div class="padding_30 padding_bottom_0 select_checked_p">
+            <div style="color:#000" id="maoDian${j}" value="ABC"><span>${j}</span>.<span>【${danxuan[i].content[1]}】</span> ${danxuan[i].content[2]}( ).</div>
+            <div class="margin_left_15" id="muban${j}"></div>
+            <div class="margin_left_15" select_id="duoxuan1" >
+              <div class="padding_20 class_color_font kaoshi_jiexi">
+                <h5 class="class_color_red class_font_14 padding_top_bottom_5">对不起，回答错误:
+                  <span class="class_color_font">A</span></h5>
+                <h5 class="class_color_success class_font_14 padding_top_bottom_5">回答正确是:
+                  <span class="class_color_font">A</span></h5>
+                <div>
+                  <h4 class="padding_top_bottom_5">解析：</h4>
+                  <p class="padding_top_bottom_5 text_indent_25">1232143</p>
+                </div>
+                <h4 class="padding_top_bottom_5">知识点：</h4>
+                <p class="padding_top_bottom_5 text_indent_25">暂无</p>
+              </div>
+            </div>
+          </div>
+    `)
+        var stringValue;
+        var curp;
+        $("#addxunhuan").append(muban);
+        $("#muban" + j).append(xuanxiang)
+        //单击的选项   判断 已答还是未答
+        $("#muban" + j).on("click", "p", function () { //单选 多选 判断
+          event.stopPropagation();
+          $(this).addClass("active").siblings($(this)).removeClass("active");
+          $(this).children().attr("checked", "true");
+          var Count = $(this).children().attr("count");
+          $("#danxuan_" + Count).addClass("bg_lan");
+          $("#duoxuan_" + Count).addClass("bg_lan");
+          $("#panduan_" + Count).addClass("bg_lan");
+          if (Count <= danxuan.length) {
+            //如果当前这个题的选择答案和当前这个题中的正确答案的属性 不相同的化  判断为错题
+            var Value = $(this).children().val();
+            var okValue = $("#maoDian" + count).attr("value");
+            //那么 讲当前的序号Count 添加到错误数组中
+            if (Value == okValue) {
+              okArr.push({
+                id: Count,
+                value: Value
+              }) //正确数组
+            } else {
+              errArr.push({
+                id: Count,
+                value: Value
+              }) //错误数组
+            }
+            //否则如果选择的和正确答案相同
+            //那么就 讲当前的序号Count 添加到正确的数组中
+            console.log(Count, Value);
+          } else if (Count > danxuan.length && Count <= (duoxuan.length + danxuan.length) + 1) {
+            if (curp != Count) {
+              stringValue = "";
+            }
+            var Value = $(this).children().val();
+            var okValue = $("#maoDian" + count).attr("value");
+            stringValue += Value;
+            curp = Count;
+            stringValue = removeRepeatStr(stringValue)
+
+            if (stringValue == okValue) {
+              alert("回答正确")
+            } else {
+              alert("回答错误")
+            }
+
+            console.log(Count, Value, stringValue);
+          } else {
+            //如果当前这个题的选择答案和当前这个题中的正确答案的属性 不相同的化  判断为错题
+            var Value = $(this).children().val();
+            var okValue = $("#maoDian" + count).attr("value");
+            //那么 讲当前的序号Count 添加到错误数组中
+            if (Value == okValue) {
+              okArr.push({
+                id: Count,
+                value: Value
+              }) //正确数组
+            } else {
+              errArr.push({
+                id: Count,
+                value: Value
+              }) //错误数组
+            }
+            //否则如果选择的和正确答案相同
+            //那么就 讲当前的序号Count 添加到正确的数组中
+            console.log(Count, Value);
+          }
+        })
+
+        $("#tiankongs" + j).blur(function () { //填空选
+          event.stopPropagation();
+          var Count = $(this).attr("count");
+          var value = $(this).val();
+          //console.log(value)
+          if (value != "") {
+            $("#tiankong_" + Count).addClass("bg_lan");
+            // console.log(Count)
+          } else {
+            $("#tiankong_" + Count).removeClass("bg_lan")
+          }
+        })
+
+        $("#jiedas" + j).change(function () { //解答
+          event.stopPropagation();
+          var Count = $(this).children().attr("count");
+          var value = $(this).children().val();
+          console.log(value)
+          if (value != "") {
+            $("#jieda_" + Count).addClass("bg_lan");
+            console.log(Count)
+          } else {
+            $("#tiankong_" + Count).removeClass("bg_lan")
+          }
+        })
+      }
+
+    }
+    /********************分别调用******************/
+    add(danxuan);
+    add(duoxuan);
+    add(panduan);
+    add(tiankong);
+    add(jieda);
+    /*********************答题卡******************/
+    for (var i = 0; i < danxuan.length; i++) {
+      count++;
+      $("#select_danxuan").append($(`
+      <a href="#maoDian${count}" style="display:block">
+        <div class="select_checked_div margin_left_5 margin_bottom_5 maoDian_A_Hover" id="danxuan_${count}">
+                <span>${count}</span>
+        </div>
+      </=>
+      `))
+    }
+    for (var i = 0; i < duoxuan.length; i++) {
+      count++;
+      $("#select_duoxuan").append($(`
+      <a href="#maoDian${count}" style="display:block" >
+        <div class="select_checked_div margin_left_5 margin_bottom_5 maoDian_A_Hover" id="duoxuan_${count}">
+                <span> ${count}</span>
+        </div>
+      </a>
+      `))
+    }
+    for (var i = 0; i < panduan.length; i++) {
+      count++;
+      $("#select_panduan").append($(`
+      <a href="#maoDian${count}" style="display:block">
+        <div class="select_checked_div margin_left_5 margin_bottom_5 maoDian_A_Hover" id="panduan_${count}">
+                <span>${count}</span>
+        </div>
+      </a>
+      `))
+    }
+    for (var i = 0; i < tiankong.length; i++) {
+      count++;
+      $("#select_tiankong").append($(`
+      <a href="#maoDian${count}" style="display:block">
+        <div class="select_checked_div margin_left_5 margin_bottom_5 maoDian_A_Hover" id="tiankong_${count}">
+                <span>${count}</span>
+        </div>
+      </a>
+      `))
+    }
+    for (var i = 0; i < jieda.length; i++) {
+      count++;
+      $("#select_jieda").append($(`
+      <a href="#maoDian${count}" style="display:block" >
+        <div class="select_checked_div margin_left_5 margin_bottom_5 maoDian_A_Hover" id="jieda_${count}">
+                <span>${count}</span>
+        </div>
+      </a>
+      `))
+    }
+    var maxtime = 60 * 60; //  
+    function CountDown() {
+      if (maxtime >= 0) {
+        minutes = Math.floor(maxtime / 60);
+        seconds = Math.floor(maxtime % 60);
+        msg = minutes + ":" + seconds;
+        $("#setTime").html(msg)
+        if (maxtime == 5 * 60) alert("距离结束仅剩5分钟");
+        --maxtime;
+      }
+
+    }
+
+    timer = setInterval("CountDown()", 1000);
+    //获取回答错的序号
+    //获取错误答题卡的id
+    //修改背景色为红色
+
+    //获取正确的序号
+    //获取正确答题卡的id
+    //修改背景色为蓝色
+
+    var errArr = [{
+
+    }]; //错误数组
+    var okArr = [{
+
+    }]; //正确数组
+    function removeRepeatStr(str) {
+      var newStr = '';
+      var len = str.length;
+      for (var i = 0; i < len; i++) {
+        if (newStr.indexOf(str[i]) == -1) {
+          newStr = newStr + str[i];
+        }
+      }
+      return newStr;
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>添加试卷</title>
+  <link rel="stylesheet" href="../css/style_kaoshi.css">
+  <style>
+    .margin-10 {
+      margin: 8px 0;
+    }
+
+    .display_center {
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .fengshuqi {
+      width: 150px;
+      height: 25px;
+      border: 1px solid #ddd;
+      line-height: 25px;
+      display: flex;
+      border-radius: 4px;
+    }
+
+    .fengshuqi>span {
+      display: block;
+      width: 50px;
+      text-align: center;
+    }
+
+    .fengshuqi>span:first-child,
+    .fengshuqi>span:last-child {
+      color: #000;
+      cursor: pointer;
+    }
+
+    .fengshuqi>span:first-child:hover,
+    .fengshuqi>span:last-child:hover {
+      background-color: #e8e8e8;
+      color: #000;
+      cursor: pointer;
+    }
+
+    .fengshuqi>span+span {
+      border-left: 1px solid #eee;
+    }
+
+    .class_color_lan {
+      color: rgb(3, 43, 129);
+    }
+
+    .class_color_red {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="T_k">
+    <!-- 结构上 -->
+    <div class="T_K_shang">
+      <!-- 标题 -->
+      <div class="class_header" style="border:0">
+        <h4 class="class_title" style="border-bottom:4px solid #eee;padding-bottom:15px;">
+          练习基本信息</h4>
+      </div>
+    </div>
+    <!-- 结构下 -->
+    <div class="T_K_xia padding_top_0">
+      <div style="border: 1px solid #eee;padding:30px;padding-top:0;border-radius: 3px;">
+        <!-- 基本信息 -->
+        <div class="display_center">
+          <div style="width: 100px;">
+            <span class="class_color_lan">|</span>
+            <span class="class_color_font class_color_lan" style="margin-right:20px;">基本信息</span>
+          </div>
+        </div>
+        <div style="margin-left: 20px;">
+          <div class="display_center">
+            <div style="width: 100px;">
+              <span class="class_color_red">*</span>
+              <span class="class_color_font" style="margin-right:20px">练习名称</span>
+            </div>
+            <input type="text" class="class_input" value="" placeholder="请输入任务名称，30个字之内">
+          </div>
+        </div>
+        <!-- 添加试题 -->
+        <div class="display_center" style="justify-content: space-between;">
+          <div style="width: 100px;">
+            <span class="class_color_lan">|</span>
+            <span class="class_color_font class_color_lan" style="margin-right:20px">添加题库</span>
+          </div>
+          <div>
+            <button class="class_button">选择题库</button>
+          </div>
+        </div>
+        <!-- 添加试题表-->
+        <div>
+          <table class="Width">
+            <thead>
+              <tr>
+                <td>序号</td>
+                <td class="w-40">题目</td>
+                <td>题型</td>
+                <td>分值</td>
+                <td>分值设置</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>01</td>
+                <td class="w-40">危险性较大的分部分项工程安全管理</td>
+                <td>单选</td>
+                <td class="num">1</td>
+                <td align="center">
+
+                </td>
+                <td>
+                  <a href="javascript:;">删除</a>
+                </td>
+              </tr>
+
+              <tr>
+                <td>01</td>
+                <td class="w-40">危险性较大的分部分项工程安全管理</td>
+                <td>单选</td>
+                <td class="num">1</td>
+                <td align="center">
+
+                </td>
+                <td>
+                  <a href="javascript:;">删除</a>
+                </td>
+              </tr>
+              <tr>
+                <td>02</td>
+                <td class="w-40">危险性较大的分部分项工程安全管理</td>
+                <td>多选</td>
+                <td class="num">1</td>
+                <td align="center">
+
+                </td>
+                <td>
+                  <a href="javascript:;">删除</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- 总分与及格线 -->
+        <div class="display_center">
+          <div style="width: 200px;">
+            <span class="class_color_lan">|</span>
+            <span class="class_color_font class_color_lan" style="margin-right:20px">练习人员</span>
+            <button class="class_button">+选择人员</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center;">
+      <button class="class_button">取消</button>
+      <button class="class_button">保存</button>
+    </div>
+  </div>
+</body>
+
+</html>
